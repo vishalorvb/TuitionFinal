@@ -1,5 +1,4 @@
 .env
-*.text
-*.txt
+
 *.db
 __pycache__
