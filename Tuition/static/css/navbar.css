@@ -1,11 +1,11 @@
 
 .topnav {
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: rgb(6, 73, 65);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
+    /* position: fixed; */
+    /* top: 0px;
+    left: 0px; */
+    /* width: 100%; */
 }
 
 .topnav a {

@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+<div class="search">
+    <form action="" method="post">
+        <div class="searchform">
+            <div class="formcomp">
+                <label for="pincode">Pincode</label>
+                <input type="text" name="pincode">
+            </div>
+            <div class="formcomp">
+                <select name="search">
+                    <option value="">Select</option>
+                    <option value="Tuition">Tuition</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+            </div>
+            <div class="formcomp">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>

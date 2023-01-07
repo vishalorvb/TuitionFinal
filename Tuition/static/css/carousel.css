@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.slides{
+    position: relative;
+    display: none;
+  
+}
+.buttons{
+ 
+  display: inline-block;
+  position: absolute;
+  bottom: 25%;
+  left: 15%;
+}
+
+.photo img{
+    height: 500px;
+    width: 100%;
+}
+.buttons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin: 5px;
+    padding: 15px;
+    background-color: rgb(6, 73, 65);;
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+}
+.buttons a:hover{
+background-color:white;
+color: rgb(6, 73, 65);
+}
+
+#coma{
+    font-weight: 700;
+   color: aqua;
+    font-size: 15vw;
+    /* line-height: 125%; */
+}
+@keyframes slideEffect{
+   from{top: 0; right: 0;}
+   to{top: 0;right:100% ;}
+}
