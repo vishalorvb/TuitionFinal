@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+{% include 'Home/navbar.html'%}
+
+
+
+<div class="cont">
+    <div class="row justify-content-around">
+        <div class="col-md-6 forms ">
+            <form action="{% url 'usermanager:registration' %}" method="post">
+                {% csrf_token %}
+                <label for="">Full Name</label>
+                <input type="text" class="form-control" name="full_name">
+                <label for="">Phone Number</label>
+                <input type="text" class="form-control" name="phone_number">
+                <label for="">Email</label>
+                <input type="text" class="form-control" name="email">
+                <p style="color: red;">{{error}}</p>
+                
+                <div class="row justify-content-around">
+                    <input type="submit" value="Get OTP">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

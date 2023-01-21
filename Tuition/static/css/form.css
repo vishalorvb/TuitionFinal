@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 .forms{
     /* border-style: solid;
     border-color: 2px  rgb(6, 73, 65); */

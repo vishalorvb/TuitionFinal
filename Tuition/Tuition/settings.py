@@ -24,6 +24,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+AUTH_USER_MODEL = 'usermanager.CustomUser'
+
 
 # Application definition
 
@@ -128,7 +130,24 @@ STATICFILES_DIRS =[
     STATIC_DIR,
 ]
 
-# Default primary key field type
+
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ''' sending email '''
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST =env('EMAIL_HOST')
+EMAIL_PORT =int(env('EMAIL_PORT'))
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER =env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD =env('EMAIL_HOST_PASSWORD')
+
+# 2factor api secret key 
+API_KEY =env('API_KEY')
+
+#razorpay credential
+RAZOR_KEY_ID =env('RAZOR_KEY_ID')
+RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
+
