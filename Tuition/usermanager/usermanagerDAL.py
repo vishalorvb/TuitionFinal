@@ -41,4 +41,6 @@ def update_password(phone,password):
         logging.exception("password not update in DAL")
         return False
        
-       
+# def updateCredit(user):
+#     try:
+#         u = CustomUser.object.get(id = )       

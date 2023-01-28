@@ -7,11 +7,15 @@
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
-    <a href="" id="post-tuition"> Post A tuition &#8680 </a>
-    <a href="" >Login</a>
-    <a href="" >Profile</a>
-    <a href="{% url 'usermanager:registration' %}" >Register</a>
-    <a href="" >Find Tuition</a>
-    <a href="" >Find Teacher</a>
-    <a href="" >Become Teacher</a> 
+    <a href="{% url 'tuition:post_tuition_page1' %}" id="post-tuition"> Post A tuition &#8680 </a>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'usermanager:logout' %}">Logout</a>
+    <a href="">Profile</a>
+    {% else %}
+    <a href="{% url 'usermanager:login_page' %}">Login</a>
+    <a href="{% url 'usermanager:registration' %}">Register</a>
+    {% endif %}
+    <a href="{% url 'tuition:view_tuitions' %}">Find Tuition</a>
+    <a href="">Find Teacher</a>
+    <a href="">Become Teacher</a>
 </div>

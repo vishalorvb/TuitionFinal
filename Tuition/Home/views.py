@@ -1,6 +1,11 @@
 from django.shortcuts import render
-
-
+from .HomeBAL import *
 
 def Home(request):
-    return render(request,'Home/home.html')
+    tuitions = getTuition()
+    return render(request,'Home/home.html',{'tuitions':tuitions})
+
+
+
+def error(request):
+    return render(request,'Home/Errorpage.html')

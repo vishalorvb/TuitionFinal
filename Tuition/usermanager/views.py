@@ -35,6 +35,8 @@ def registration(request):
 
 
 def login_page(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('Home:Home'))
     if request.method == 'POST':
         try:
             # This try block is to check if someone modify name's in form
@@ -56,13 +58,14 @@ def verify_otp(request):
         username = str(request.session['phone_number'])
         user = authenticate(request, phone_number=username, password=password)
         if user:
+            del request.session['phone_number']
             login(request, user)
         else:
             return render(request, 'usermanager/Verify.html', {'error': 'Invalid OTP'})
         try:
             r = request.session['redirect_url_name']
             del request.session['redirect_url_name']
-            return HttpResponseRedirect(r)
+            return HttpResponseRedirect(reverse(r))
         except:
             return HttpResponseRedirect(reverse('Home:Home'))
     try:
@@ -71,3 +74,7 @@ def verify_otp(request):
     except Exception:
         logging.exception("Phone number not Exits in session")
         return HttpResponseRedirect(reverse('usermanager:login_page'))
+
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('Home:Home'))

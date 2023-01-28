@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     {% load static %}
-    <title>Home Tuition</title>
 </head>
-<body>
-    
 
+<body>
     {% include 'Home/navbar.html'%}
-    {% include 'Home/carousel.html'%}
-    {% include 'Home/search.html'%}
-    {% include 'usermanager/form.html'%}
     <link rel="stylesheet" type="text/css" href="{% static 'css/Tuitions.css' %}">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <div class="tution">
 
@@ -63,7 +61,7 @@
                 </table>
             </div>
             <div class="view-details">
-                <button><a href="/tuition/unlock_tuition?tuition_id={{t.id}}">View Contact</a></button>
+                <button><a href="tuition/unlock_tuition?tuition_id={{t.id}}">View Contact</a></button>
             </div>
             <div class="description">
                 <p><b>
@@ -74,6 +72,6 @@
         </div>
         {% endfor %}
     </div>
-
 </body>
+
 </html>
