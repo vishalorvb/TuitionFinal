@@ -1,0 +1,60 @@
+
+.row{
+    margin: 5px;
+    padding: 5px;
+}
+
+
+.userinfo{
+    border: 2px solid rgb(6, 73, 65);
+    padding: 10px;
+    /* display: inline-block; */
+}
+
+.userinfo a, .buy a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(6, 73, 65);
+    color: white;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 5px;
+}
+
+
+.userinfo img{
+height: 150px;
+width: 150px;
+border-radius: 50%;
+margin: auto;
+display: block;
+padding: 4px;
+
+}
+
+
+.creditinfo{
+    padding: 10px;
+    margin: 10px;
+}
+
+.credit{
+    box-shadow: 5px 5px 10px gray;
+    padding: 5px;
+    text-align: center;
+    color: rgb(6, 73, 65);
+}
+
+.panel-title{
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.panel-title a{
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(6, 73, 65);
+    padding: 10px;
+}

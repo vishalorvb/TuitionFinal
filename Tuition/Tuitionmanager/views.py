@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect,HttpResponseBadRequest,HttpResponseNotAllowed
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -56,7 +56,7 @@ def post_tuition_page2(request):
             request.session['redirect_url_name'] = 'tuition/save_tuition'
             return HttpResponseRedirect(reverse('usermanager:login_page'))
     try:
-        x = request.session['student_name']
+        x = request.session['pincode']
         return render(request, 'tuition/post_tuition_page2.html')
 
     except:
@@ -78,32 +78,23 @@ def unlock_tuition(request):
             tution = is_tutionid_exists(tuition_id)
             if tution :
                 if request.user.credit_points > 0:
-                    unlock_tuition(request.user,tution)
-                    return HttpResponse("Unlock tut")
+                    print(request.user)
+                    unlock_tuitions(request.user,tution)
+                    return HttpResponseRedirect(reverse('Home:profile'))
+                else:
+                    return HttpResponseRedirect(reverse('Home:profile'))
+                    # write code here to redirect to payment page
+                   
             else:
-                pass
-        except:
-            pass
-        
-    # tuition_id = request.GET['tuition_id']
-    # tuition = Tuitions.objects.get(id = tuition_id)
-    
-    # points = request.user.credit_points
-    # print("credit point is",points)
-    # if  points > 0:
-    #     request.user.credit_points = points - 1
-    #     request.user.save()
-    #     print(request.user.credit_points)
-    #     tu = Tuition_unlock.objects.create(User_id = request.user , Tuition_id = tuition)
-    #     contact = tuition.phone_number
-    #     return HttpResponse(contact)
-    # return HttpResponseRedirect(reverse('payment:create_order'))
-    return HttpResponse("Unlock tut")
+                return HttpResponseRedirect(reverse('Home:error'))
+        except Exception:
+            logging.exception("Unlock tution view")  
+
+    return HttpResponseRedirect(reverse('Home:error'))
     
 def save_tuition(request):
     try:
         if request.user.is_authenticated:
-        
             student_name = request.session['student_name']
             phone_number = request.session['student_phone_number']
             course = request.session['course']
@@ -125,11 +116,31 @@ def save_tuition(request):
             del(request.session['pincode']) 
             del(request.session['locality']) 
             
-            saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=subject, teaching_mode=mode, fee=fee,pincode=pincode,locality=locality)
-            #write here where to redirect after login
-            return HttpResponse("tuition saved")
-        return HttpResponse("not saved login first")
+            t = saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=subject, teaching_mode=mode, fee=fee,pincode=pincode,locality=locality)
+            if t:
+                return HttpResponseRedirect(reverse('Home:profile'))
+            else:
+                return HttpResponseRedirect(reverse('Home:error'))
+        return HttpResponseRedirect(reverse('usermanager:login_page'))
     except Exception:
         logging.exception("save tuition")  
         return HttpResponseRedirect(reverse('tuition:post_tuition_page1'))
     
+    
+@login_required(login_url="usermanager/login_page")   
+def change_status(request):
+    if request.method == "GET": 
+        try:
+            tid = int(request.GET['tuition_id'])
+            t  = change_status(request.user.id,tid)
+            if t:
+                return HttpResponseRedirect(reverse('Home:profile'))
+            else:
+                return HttpResponseBadRequest("Not belongs to you")
+        except Exception:
+            logging.exception("change status of tuition")
+            return HttpResponseRedirect(reverse('Home:error'))
+    else:
+        return HttpResponseNotAllowed("Method not allowed")
+        
+     

@@ -9,3 +9,7 @@ def Home(request):
 
 def error(request):
     return render(request,'Home/Errorpage.html')
+
+
+def profile(request):
+    return render(request,'Home/profile.html')
