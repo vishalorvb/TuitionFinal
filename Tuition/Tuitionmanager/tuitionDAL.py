@@ -34,12 +34,15 @@ def getAllTuition():
         
 def IsTuitionIdExist(id):
     try:
-        return Tuitions.objects.get(id = id)
-    except :
+        t = Tuitions.objects.get(id = id)
+        logging.info("Tuition id Exits")
+        return t
+    except Exception:
         return False
             
 def unlockTuition(user,tuition):
     try:
+        logging.info("Tuition unlocked DAL")
         return Tuition_unlock.objects.create(User_id =user,Tuition_id = tuition)
     except Exception:
         logging.exception("UnlockTuition DAL")
@@ -48,13 +51,14 @@ def unlockTuition(user,tuition):
 def IstuitionUserExist(userid,tutid):
     try:
         Tuition_unlock.objects.get(User_id=userid,Tuition_id = tutid)
+        logging.info("Tuition already unlocked by user")
         logging.exception(" ") 
         return True
     except ObjectDoesNotExist:
-        logging.exception(" ")
+        logging.info("Tuition Not belongs to user")
         return False
     except MultipleObjectsReturned:
-        logging.exception(" ")
+        logging.info("Tuition Not belongs multiple times to user")
         return True
     
 def changeStatus(tutionid):
@@ -69,26 +73,31 @@ def changeStatus(tutionid):
             T.save()
             return True
         
-    except :
+    except Exception:
+        logging.exception(" ")
         return False
     
 def IsTuitionBelongsToUser(userid,tuitionid):
     try:
-        Tuition.object.filter(id=tuitionid,user_id=userid)
+        Tuitions.objects.filter(id=tuitionid,user_id=userid)
         return True
-    except:
+    except Exception:
+        logging.exception(" ")
         return False
                  
 def MyTuition(userid):
     try:
-        return Tuition.object.filter(user_id=userid)                             
+        return Tuitions.objects.filter(user_id=userid)                             
     except Exception:
         logging.exception(" ")
         return None
     
 def Myunlocks(userid):
     try:
-        return Tuition_unlock.object.filter(User_id=userid)
+        t = Tuition_unlock.objects.filter(User_id=userid)
+        print("Printing unlock tuition table")
+        print(t)
+        return t
     except:
         return None    
         

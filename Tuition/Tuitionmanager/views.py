@@ -76,6 +76,7 @@ def unlock_tuition(request):
         try:
             tuition_id = request.GET['tuition_id']
             tution = is_tutionid_exists(tuition_id)
+            logging.info("Calling view of unlock tuition")
             if tution :
                 if request.user.credit_points > 0:
                     print(request.user)
@@ -131,8 +132,8 @@ def save_tuition(request):
 def change_status(request):
     if request.method == "GET": 
         try:
-            tid = int(request.GET['tuition_id'])
-            t  = change_status(request.user.id,tid)
+            tid = request.GET['tuition_id']
+            t  = change_status_of_tuition(request.user.id,tid)
             if t:
                 return HttpResponseRedirect(reverse('Home:profile'))
             else:

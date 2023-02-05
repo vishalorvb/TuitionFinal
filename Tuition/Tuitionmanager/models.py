@@ -26,3 +26,7 @@ class Tuitions(models.Model):
 class Tuition_unlock(models.Model):
     User_id = models.ForeignKey(CustomUser, on_delete = models.CASCADE)  
     Tuition_id = models.ForeignKey(Tuitions, on_delete = models.CASCADE)    
+    
+    def __str__(self):
+        return  self.Tuition_id.student_name
+    
