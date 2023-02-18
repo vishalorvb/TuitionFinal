@@ -23,7 +23,7 @@ def get_all_tuition():
 
 def unlock_tuitions(user,tution):
     logging.info("Calling  BAL")
-    if IstuitionUserExist(user.id,tution.id) == False and user.id != tution.user_id.id:
+    if IstuitionUserExist(user.id,tution.id) == False and user.id != tution.user_id.id and user.credit_points > 0:
         if unlockTuition(user,tution):  
            cp = user.credit_points
            user.credit_points = cp -1

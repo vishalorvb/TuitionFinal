@@ -8,5 +8,6 @@ urlpatterns = [
     path('',include('Home.urls')), 
     path(r'usermanager',include('usermanager.urls')), 
     path(r'tuition',include('Tuitionmanager.urls')), 
+    path(r'teacher/',include('Teacher.urls')),
 
 ]

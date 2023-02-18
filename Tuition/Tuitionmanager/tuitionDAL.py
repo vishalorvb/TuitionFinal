@@ -42,10 +42,8 @@ def IsTuitionIdExist(id):
             
 def unlockTuition(user,tuition):
     try:
-        logging.info("Tuition unlocked DAL")
         return Tuition_unlock.objects.create(User_id =user,Tuition_id = tuition)
     except Exception:
-        logging.exception("UnlockTuition DAL")
         return False
         
 def IstuitionUserExist(userid,tutid):
