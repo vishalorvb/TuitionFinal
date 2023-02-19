@@ -9,5 +9,6 @@ urlpatterns = [
     path(r'usermanager',include('usermanager.urls')), 
     path(r'tuition',include('Tuitionmanager.urls')), 
     path(r'teacher/',include('Teacher.urls')),
+    path(r'payment/',include('payment.urls')),
 
 ]

@@ -66,7 +66,8 @@ def verify_otp(request):
             r = request.session['redirect_url_name']
             del request.session['redirect_url_name']
             return HttpResponseRedirect(reverse(r))
-        except:
+        except Exception:
+            logging.exception("Not able to acces redirect url name")
             return HttpResponseRedirect(reverse('Home:Home'))
     try:
         check_session = request.session['phone_number']

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Document</title>
+</head>
+
+<body>
+    {% include 'Home/navbar.html'%}
+
+
+    <h1>New plan</h1>
+    <button onclick="getDetails(1)">500</button>
+    <button onclick="getDetails(2)">800</button>
+    <script>
+        function getDetails(plan) {
+            console.log(plan)
+            fetch("/payment/orderdetails?plan=" + plan)
+                .then((response) => response.json())
+                .then(context => {
+                    console.table(context)
+                    if (context.name == "none") {
+                        console.log("name is none")
+                        window.location.href = "/usermanager/login";
+                    }
+                    else {
+                        let rzp1 = new Razorpay(context)
+                        rzp1.open()
+                    }
+                });
+        }
+
+    </script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+</body>
+
+</html>
