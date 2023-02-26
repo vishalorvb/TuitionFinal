@@ -2,6 +2,8 @@
 from django.contrib import admin
 from django.urls import path
 from django.urls import path,include,re_path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,3 +14,4 @@ urlpatterns = [
     path(r'payment/',include('payment.urls')),
 
 ]
+urlpatterns += staticfiles_urlpatterns()
