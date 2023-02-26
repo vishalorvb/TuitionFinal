@@ -1,14 +1,12 @@
 
 
-
-
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-import environ
 env = environ.Env()
-environ.Env.read_env(BASE_DIR/ '.env')
+environ.Env.read_env(BASE_DIR / '.env')
 TEMP_DIR = BASE_DIR/'Templates'
 STATIC_DIR = BASE_DIR / 'static'
 
@@ -20,7 +18,7 @@ STATIC_DIR = BASE_DIR / 'static'
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -35,6 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'Home',
     'usermanager',
@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Tuition.urls'
@@ -79,14 +81,14 @@ WSGI_APPLICATION = 'Tuition.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': env('DB_NAME'),  
-        'USER': env('DB_USER'),  
-        'PASSWORD': env('DB_PASSWORD'),  
-        'HOST': env('DB_HOST'),  
-        'PORT': env('DB_PORT'),  
-        'OPTIONS': {  
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
 }
@@ -129,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[
+STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
@@ -141,16 +143,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ''' sending email '''
 EMAIL_BACKEND = env('EMAIL_BACKEND')
-EMAIL_HOST =env('EMAIL_HOST')
-EMAIL_PORT =int(env('EMAIL_PORT'))
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = int(env('EMAIL_PORT'))
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER =env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD =env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-# 2factor api secret key 
-API_KEY =env('API_KEY')
+# 2factor api secret key
+API_KEY = env('API_KEY')
 
-#razorpay credential
-RAZOR_KEY_ID =env('RAZOR_KEY_ID')
-RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
-
+# razorpay credential
+RAZOR_KEY_ID = env('RAZOR_KEY_ID')
+RAZOR_KEY_SECRET = env('RAZOR_KEY_SECRET')
