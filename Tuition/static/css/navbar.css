@@ -1,11 +1,48 @@
+@import url("'https://fonts.googleapis.com/css?family=Faustina'");
+/* ######################################*/
+/* ##############Global css #############*/
+/* ######################################*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* font-family: 'Faustina'; */
+}
+
+:root {
+    --Dark: rgb(13, 27, 73);
+    --Light: rgb(164, 35, 33);
+    --Fade:rgb(51, 73, 147);
+}
+
+.smallinput {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    height: 30px;
+}
+.smallbutton{
+    color: var(--Dark);
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 0px 15px;
+    font-size: 20px;
+    text-align: center;
+}
+.smallbutton:hover{
+    background-color: var(--Dark) ;
+    color: white;
+}
+/* ######################################*/
+/* ############## NavBar css #############*/
+/* ######################################*/
 
 .topnav {
-    /* overflow: hidden; */
-    background-color: rgb(6, 73, 65);
-    /* position: fixed; */
-    /* top: 0px;
-    left: 0px; */
-    /* width: 100%; */
+    background-color: var(--Dark);
+    overflow: hidden;
+
 }
 
 .topnav a {
@@ -15,24 +52,28 @@
     padding: 5px;
     text-decoration: none;
     font-size: 20px;
-    margin: 5px 15px;
-    border: 2px solid white;
+    margin: 2px 4px;
+    border: 1px solid white;
     border-radius: 5px;
     font-weight: 500;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Faustina';
+
 
 }
-#post-tuition{
+
+#post-tuition {
     background-color: white;
-    color: rgb(6, 73, 65);
+    color: var(--Dark);
 }
-#post-tuition:hover{
-    background-color:rgb(6, 73, 65) ;
+
+#post-tuition:hover {
+    background-color: var(--Dark);
     color: white;
 }
-.topnav a:hover{
+
+.topnav a:hover {
     background-color: white;
-    color: rgb(6, 73, 65);
+    color: var(--Dark);
 }
 
 .topnav .icon {
@@ -40,9 +81,10 @@
 }
 
 .topnav img {
-    height: 50px;
+    height: 40px;
     width: 50px;
-    padding: 4px;
+    /* padding: 4px; */
+    border-radius: 20px;
 }
 
 
@@ -61,11 +103,13 @@
     .topnav.responsive {
         position: relative;
     }
+
     .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
+
     .topnav.responsive a {
         float: none;
         display: block;

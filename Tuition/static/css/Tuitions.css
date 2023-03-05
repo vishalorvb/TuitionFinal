@@ -1,7 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 .tution{
     display: flex;
     justify-content: space-around;
@@ -17,9 +14,7 @@
 h2{
     text-align: center;
 }
-body{
-    background-color: #e0ebeb;
-}
+
 .tution_body{
     background-color: white;
     margin-top: 10px;
