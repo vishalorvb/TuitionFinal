@@ -1,10 +1,5 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 .forms{
-    /* border-style: solid;
-    border-color: 2px  rgb(6, 73, 65); */
     border-radius: 2px;
     margin: 2px;
     padding: 10px;
@@ -12,20 +7,8 @@
     background-color: rgb(141,197,227);
     font-size: 20px;
     font-weight: 600;
-    /* height: 100%; */
-}
-.forms input[type='submit']{
-background-color: white;
-width: 95%;
-border-radius: 5px;
-border-color: white;
-margin-top: 10px;
-padding: 10px;
-background-color: rgb(6, 73, 65);
-color: white;
-font-weight:700;
+    box-shadow: 5px 10px 50px gray;
 
 }
-.cont{
-    margin-top: 10px;
-}
+
+

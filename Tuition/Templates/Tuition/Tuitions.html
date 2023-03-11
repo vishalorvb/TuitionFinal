@@ -14,60 +14,82 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Tuitions.css' %}">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <div class="tution">
-
+    <div class="row">
         {% for t in tuitions %}
-
-        <div class="tution_body">
-            <div class="tution_body_head">
-                <div class="tb_inner">
-                    <h2> &#x1F393 {{ t.course }}</h2>
-                </div>
-                <div class="tb_inner">
-                    <h2> &#x1F4D6 {{t.subject}} </h2>
-                </div>
-                <div class="tb_inner">
-                    <h2><i class="material-icons" style="font-size:20px">place</i> Bangalore</h2>
-                </div>
-            </div>
-            <div class="tution_body_content">
-                <div class="tb_neck">
-                    <div class="tb_neck_inner">
-                        <p><b>Posted on: {{t.posted_date}}</b></p>
+        <div class="col-lg-6 col-md-6">
+            <div class="tution_body">
+                <div class="tution_body_head">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-s-4">
+                            <div class="tb_inner">
+                                <h5> &#x1F393 {{ t.course }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4  col-s-4">
+                            <div class="tb_inner">
+                                <h5> &#x1F4D6 {{t.subject}} </h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-s-4">
+                            <div class="tb_inner">
+                                <h5><i class="material-icons" style="font-size:20px">place</i> Bangalore</h5>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tb_neck_inner">
-                        <p><b>Fee: {{t.fee}} /Hr</b></p>
+                </div>
+                <div class="tution_body_content">
+                    <div class="row justify-content-around">
+                        <div class="col-lg-4 col-md-4 col-s-4">
+                            <div class="tb_neck_inner">
+                                <p><b>Posted on: {{t.posted_date}}</b></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-s-4">
+                            <div class="tb_neck_inner">
+                                <p><b>Fee: {{t.fee}} /Hr</b></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="table_info">
-                <table>
-                    <tr>
-                        <td>Posted By:</td>
-                        <td>{{t.student_name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Locality:</td>
-                        <td>{{t.locality}} </td>
-                    </tr>
-                    <tr>
-                        <td>Pin Code:</td>
-                        <td>{{t.pincode}}</td>
-                    </tr>
-                    <tr>
-                        <td>Teaching Mode:</td>
-                        <td>{{t.teaching_mode}}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="view-details">
-                <button><a href="/tuition/unlock_tuition?tuition_id={{t.id}}">View Contact</a></button>
-            </div>
-            <div class="description">
-                <p><b>
-                    Description:{{t.description}}
-                    </b>
-                </p>
+                <div class="table_info">
+                    <table>
+                        <tr>
+                            <td>Posted By:</td>
+                            <td>{{t.student_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Locality:</td>
+                            <td>{{t.locality}} </td>
+                        </tr>
+                        <tr>
+                            <td>Pin Code:</td>
+                            <td>{{t.pincode}}</td>
+                        </tr>
+                        <tr>
+                            <td>Teaching Mode:</td>
+                            <td>{{t.teaching_mode}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="view-details">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-3 col-s-3">
+                            <button class="darksmallbutton"><a href="/tuition/unlock_tuition?tuition_id={{t.id}}">View
+                                    Contact</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-s-10">
+                            <p>
+                                <b>
+                                    Description:{{t.description}}
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
