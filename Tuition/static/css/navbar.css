@@ -7,9 +7,9 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* font-family: 'Faustina'; */
     font-family: 'Faustina';
 }
+
 
 a:link {
     text-decoration: none;
@@ -35,6 +35,7 @@ a:link {
     border-radius: 5px;
     height: 35px;
     border: none;
+    margin: 5px;
 }
 
 .smallbutton {
@@ -46,6 +47,18 @@ a:link {
     font-size: 20px;
     text-align: center;
 }
+.submitbutton {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    height: 35px;
+    border: none;
+    margin: 5px;
+    background-color: var(--Dark);
+    color: white;
+}
+
+
 
 .largebutton {
     color: white;

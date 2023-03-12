@@ -1,4 +1,4 @@
-.count{
+.count {
     background-color: var(--Light);
     color: white;
     text-align: center;
@@ -6,3 +6,9 @@
     padding: 10px;
     font-family: Georgia, serif;
 }
+
+.heading {
+    text-align: center;
+    color: var(--Light);
+}
+
