@@ -3,8 +3,8 @@
     border-radius: 2px;
     margin: 2px;
     padding: 10px;
-    color: black;
-    background-color: rgb(141,197,227);
+    color: white;
+    background-color: var(--Dark);
     font-size: 20px;
     font-weight: 600;
     box-shadow: 5px 10px 10px gray;
