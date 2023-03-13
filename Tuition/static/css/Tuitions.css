@@ -1,7 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+/* 
 .tution{
     display: flex;
     justify-content: space-around;
@@ -17,9 +14,7 @@
 h2{
     text-align: center;
 }
-body{
-    background-color: #e0ebeb;
-}
+
 .tution_body{
     background-color: white;
     margin-top: 10px;
@@ -88,11 +83,56 @@ body{
 table{
     font-size: 20px;
     font-weight: bold;
-    /* border: 1px dotted black; */
+
 }
 .table_info{
     border: 1px dashed black;
     border-radius: 10px;
     margin: 2px 10px 2px;
     padding: 10px;
+} 
+*/
+
+
+
+.tution_body_head {
+    background-color: var(--Dark);
+    border-radius: 5px 5px 2px 2px;
+    margin: 0px;
+    padding: 4px;
+    color: white;
+
+}
+
+.table_info {
+    border: 1px dashed var(--Light);
+    border-radius: 10px;
+    margin: 2px 10px 2px;
+    padding: 10px;
+}
+
+
+
+.view-details a {
+    color: white;
+}
+
+.description {
+    margin: 2px;
+    padding: 4px;
+    border: 1px solid var(--Dark);
+    border-radius: 5px;
+    background-color: var(--Fade);
+    margin: 10px 10px 5px 5px;
+
+}
+
+.tution_body{
+  
+    margin-top: 10px;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow:6px 3px 8px 2px  rgb(104, 103, 103);
+    
+  
 }
