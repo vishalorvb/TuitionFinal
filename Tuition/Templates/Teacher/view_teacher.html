@@ -11,7 +11,6 @@
 
 <body>
     <link rel="stylesheet" type="text/css" href="{% static 'css/Teacher.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% include 'Home/navbar.html'%}
     <div class="tution">
         {% for teacher in Teachers %}
@@ -21,11 +20,11 @@
                     <h1>{{teacher.Name}}</h1>
                 </div>
                 <div class="tb_inner">
-                    <h2> Age-25 M </h2>
+                    <h2> Age:{{teacher.Age}}-{{teacher.Gender}} </h2>
                 </div>
-                <div class="tb_inner">
+                <!-- <div class="tb_inner">
                     <h2><i class="material-icons" style="font-size:20px">place</i> {{teacher.location}}</h2>
-                </div>
+                </div> -->
             </div>
             <div class="tution_body_content">
                 <div class="tb_neck">
@@ -39,8 +38,7 @@
             </div>
             <div class="table_info">
                 <div class="info">
-                    <!-- write code here to add image -->
-                    <img src="" alt="">
+                    
                 </div>
                 <div class="info">
                     <table>
@@ -62,11 +60,11 @@
                         </tr>
                         <tr>
                             <td>Locality:</td>
-                            <td>{{teacher.location}}</td>
+                            <td>{{teacher.Location}}</td>
                         </tr>
                         <tr>
                             <td>Pincode:</td>
-                            <td>{{teacher.pincode}}</td>
+                            <td>{{teacher.Pincode}}</td>
                         </tr>
                     </table>
                 </div>
@@ -82,6 +80,7 @@
         </div>
         {% endfor %}
     </div>
+    {% include 'Home/footer.html'%}
     
 </body>
 

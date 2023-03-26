@@ -26,6 +26,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
 
 
 def getorderdetails(request):
+    
     if request.method == "GET":
         try:
             plan_code = request.GET["plan"] 

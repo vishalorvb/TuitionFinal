@@ -14,7 +14,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="righthalf">
-                            <form action="" method="post"></form>
+                            <form action="{% url 'usermanager:login_page' %}" method="post">
+                            {% csrf_token %}
                             <div class="col-12">
                                 <label for="Enter Phone Number">Enter Phone Number</label>
                             </div>
@@ -24,6 +25,7 @@
                             <div class="col-12">
                                 <input class="submitbutton" type="submit" value="Get OTP">
                             </div>
+                            <p>{{error}}</p>
                             </form>
                         </div>
                     </div>

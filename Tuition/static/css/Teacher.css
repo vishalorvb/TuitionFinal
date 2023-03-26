@@ -25,7 +25,7 @@
   
   }
   .tution_body_head{
-    background-color: rgb(55, 99, 105);
+    background-color: var(--Dark);
     border-radius: 5px 5px 2px 2px;
     margin: 0px;
     padding: 4px;
@@ -56,14 +56,14 @@
     padding: 2px;
    border: 1px solid black;
    border-radius: 5px;
-   background-color: rgb(55, 99, 105);
+   background-color: var(--Dark);
    margin: 10px 10px 5px 5px;
    text-align: center;
    height:60px;
    color: white;
   }
   .view-details button{
-    background-color: rgb(55, 99, 105);;
+    background-color: var(--Dark);;
     font-size: 20px;
     margin: 5px;
     padding: 10px;

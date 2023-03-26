@@ -1,4 +1,4 @@
-@import url("'https://fonts.googleapis.com/css?family=Faustina'");
+
 /* ######################################*/
 /* ##############Global css #############*/
 /* ######################################*/
@@ -10,7 +10,10 @@
     font-family: 'Faustina';
 }
 
-
+.row{
+    width: 99%;
+    margin-left: 20px;
+}
 a:link {
     text-decoration: none;
 }

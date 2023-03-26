@@ -1,22 +1,40 @@
+
+
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 {% include 'Home/navbar.html'%}
 
-<div class="cont">
-    <div class="row justify-content-around">
-        <div class="col-md-6 forms ">
-            <form action="{% url 'usermanager:verify_otp' %}" method="post">
-                {% csrf_token %}
-                <label for="">Enter OTP</label>
-                <input type="text" class="form-control" name="otp">
-                <p>{{error}}</p>
-                <div class="row justify-content-around">
-                    <input type="submit" value="Verify OTP">
+<div class="outer">
+    <div class="row align-items-center justify-content-lg-center">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
+            <div class="innerform">
+                <div class="row align-items-center justify-content-lg-center">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="lefthalf">
+                          
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="righthalf">
+                            <form action="{% url 'usermanager:verify_otp' %}" method="post">
+                            {% csrf_token %}
+                            <div class="col-12">
+                                <label for="">Enter OTP</label>
+                            </div>
+                            <div class="col-12">
+                                <input class="midinput" type="text" name="otp">
+                            </div>
+                            <div class="col-12">
+                                <input class="submitbutton" type="submit" value="Verify OTP">
+                            </div>
+                            <p>{{error}}</p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
-
     </div>
+
 </div>
+{% include 'Home/footer.html'%}

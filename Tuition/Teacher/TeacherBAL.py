@@ -28,12 +28,13 @@ def unlock_teacherBAL(user,teacher):
 def save_teacher(Name, Gender, Experience, 
                  Location, Qualification, Subject, classes, 
                  About, User_id, Teaching_mode, 
-                 Phone_number):
+                 Phone_number,Age,Fee,Pincode):
     return CreateTeacher(Name=Name, Gender=Gender,
                         Experience=Experience, location=Location,
                         Qualification=Qualification, Subject=Subject,
                         classes=classes, About=About, User_id=User_id,
-                        Teaching_mode=Teaching_mode, Phone_number=Phone_number)
+                        Teaching_mode=Teaching_mode, Phone_number=Phone_number,
+                        Age=Age,Fee=Fee,Pincode=Pincode)
 
 def get_latest_teacher():
     return getLatestTeacher()    

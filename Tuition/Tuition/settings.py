@@ -20,7 +20,9 @@ STATIC_DIR = BASE_DIR / 'static'
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(env('DEBUG'))
+print("Debug is",DEBUG)
+# DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 

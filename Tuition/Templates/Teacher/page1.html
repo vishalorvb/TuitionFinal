@@ -2,28 +2,51 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Teacher</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
 </head>
 
 <body>
     {% include 'Home/navbar.html'%}
-    <form action="/teacher/teacher_page1" method="post">
-        {%csrf_token%}
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="subject" placeholder="subject">
-        <input type="text" name="class" placeholder="class">
-        online
-        <input type="radio" name="mode" value="online">
-        offline
-        <input type="radio" name="mode" value="offline">
-        both
-        <input type="radio" name="mode" value="both">
-        <input type="submit" value="Become Teacher">
+    <div class="formcontainer">
+        <form action="{% url 'teacher:teacher_page1' %}" method="post">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-md-5 forms">
+                    <div>
+                        <label for=""> Name</label>
+                        <input type="text" name="name" class="midinput">
+                        <label for="">Subject</label>
+                        <input type="text" name="subject" class="midinput">
+                        <label for="">Class</label>
+                        <input type="text" name="class" class="midinput">
 
-    </form>
+                        <br>
+
+                        <label for="">Mode Of Teaching :</label><br>
+                        <label for="">Online</label>
+                        <input type="radio" class="form-check-input" value='online' name="mode">
+                        <label for="">Offline</label>
+                        <input type="radio" class="form-check-input" value='offline' name="mode">
+                        <label for="">Both</label>
+                        <input type="radio" class="form-check-input" value='both' name="mode">
+
+
+                        <div class="row justify-content-around">
+                            <div class="col-lg-12">
+                                <input type="submit" class="submitbutton" value="Get Free Demo Class">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>

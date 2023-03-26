@@ -12,15 +12,18 @@
             <form action="{% url 'usermanager:registration' %}" method="post">
                 {% csrf_token %}
                 <label for="">Full Name</label>
-                <input type="text" class="form-control" name="full_name">
+                <input type="text" class="midinput" name="full_name">
                 <label for="">Phone Number</label>
-                <input type="text" class="form-control" name="phone_number">
+                <input type="text" class="midinput" name="phone_number">
                 <label for="">Email</label>
-                <input type="text" class="form-control" name="email">
+                <input type="text" class="midinput" name="email">
                 <p style="color: red;">{{error}}</p>
                 
-                <div class="row justify-content-around">
-                    <input type="submit" value="Get OTP">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10 align-self-end">
+                        <input class="largebutton" type="submit" value="Get OTP">
+                    </div>
+                   
                 </div>
             </form>
         </div>

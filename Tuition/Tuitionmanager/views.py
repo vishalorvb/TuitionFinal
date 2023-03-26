@@ -53,7 +53,7 @@ def post_tuition_page2(request):
             return save_tuition(request)
            
         else:
-            request.session['redirect_url_name'] = 'tuition/save_tuition'
+            request.session['redirect_url_name'] = 'tuition:save_tuition'
             return HttpResponseRedirect(reverse('usermanager:login_page'))
     try:
         x = request.session['pincode']
