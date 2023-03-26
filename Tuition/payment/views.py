@@ -56,7 +56,22 @@ def getorderdetails(request):
     
 # @login_required(login_url="/usermanager/login")
 def Create_payment_order(request):
-    return render(request, 'payment/payment_page.html')
+    plans = get_plan()
+    silver_price = 0
+    gold_price = 0
+    for plan in plans:
+        print(plan.plan_code)
+        if plan.plan_code == "1":
+            silver_price = plan.price/100
+        if plan.plan_code == "2":
+            gold_price = plan.price/100
+    context = {
+        "silver":silver_price,
+        "gold":gold_price
+    }        
+            
+    print("plan price",silver_price,gold_price)    
+    return render(request, 'payment/payment_page.html',context)
 
 
 @csrf_exempt

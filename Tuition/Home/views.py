@@ -12,11 +12,6 @@ def Home(request):
 def profile(request):
     mytution = getMytuition(request.user.id)
     mytuitionunlock = getMyUnlockTuition(request.user.id)
-    print(mytution)
-    print("my unlocks")
-    print(mytuitionunlock)
-    for t in mytuitionunlock:
-        print(t.Tuition_id.fee)
     context = {"T":mytution,"UT":mytuitionunlock}
     return render(request,'Home/profile.html',context)
 

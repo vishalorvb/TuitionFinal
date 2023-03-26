@@ -33,3 +33,6 @@ def getOrderByRazorId(order_id):
     except Exception:
         logging.exception("PaymentDAL: GetOrderByRazorId : razor pay order id not exit" )
         return False
+    
+def getPlans():
+    return plan.objects.all()    

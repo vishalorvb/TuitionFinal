@@ -67,3 +67,7 @@ def verify_paymentBAL(params_dict):
     else:
         logging.info("payment signature in not valid") 
         return False   
+    
+    
+def get_plan():
+    return getPlans() 
