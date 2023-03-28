@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Teacherprofile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+    <title>teacher profile</title>
+</head>
+
+<body>
+    {% include 'Home/navbar.html'%}
+
+    <div class="allcontent">
+        <form action="{% url 'tuition:post_tuition_page2' %}" method="post">
+            {% csrf_token %}
+            <div class="row justify-content-around">
+                <div class="col-md-5 forms">
+                    <div>
+                        <label for="">Name</label>
+                        <input type="text" name="name" class="form-control">
+
+                        <label for="">Experience</label>
+                        <input type="number" name="experience" class="form-control">
+
+                        <label for="">Locality</label>
+                        <input type="text" name="locality" class="form-control">
+
+                        <label for="">Qualification</label>
+                        <input type="text" name="qualification" class="form-control">
+
+                        <label for="">Subject</label>
+                        <input type="text" name="subject" class="form-control">
+
+
+                        <label for="">Standard</label>
+                        <input type="text" name="classes" class="form-control">
+
+                        <label for="">Pincode</label>
+                        <input type="text" name="pincode" class="form-control">
+
+                        <label for="">Teaching Mode :</label>
+                        <label for="">Online</label>
+                        <input type="radio" class="form-check-input" value='online' name="mode">
+                        <label for="">Offline</label>
+                        <input type="radio" class="form-check-input" value='offline' name="mode"> 
+                        <label for="">Both</label>
+                        <input type="radio" class="form-check-input" value='both' name="mode">
+                        <br>
+
+                        <label for="">Age</label>
+                        <input type="number" name="age" class="form-control">
+
+                        <label for="">Fee</label>
+                        <input type="number" name="fee" class="form-control">
+
+                        <label for="">About</label>
+                        <textarea class="form-control" name="about" rows="3"></textarea>
+
+                        <div class="row justify-content-around">
+                            <div class="col-lg-11">
+                                <input type="submit" class="submitbutton" value="Update">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% include 'Home/footer.html'%}
+</body>
+
+</html>

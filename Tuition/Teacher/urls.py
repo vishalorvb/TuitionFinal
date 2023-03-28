@@ -10,4 +10,5 @@ urlpatterns = [
     re_path('create_teacher', views.Create_teacher, name='create_teacher'),
     re_path('view_teacher', views.view_teacher, name='view_teacher'),
     re_path('unlock_teacher', views.unlock_teacher, name='unlock_teacher'),
+    re_path('teacher_profile', views.Teacher_Profile, name='teacher_profile'),
 ]

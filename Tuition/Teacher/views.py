@@ -30,9 +30,9 @@ def teacher_page2(request):
             request.session['location'] = request.POST['location']
             request.session['qualification'] = request.POST['qualification']
             request.session['about'] = request.POST['about']
-            request.session['about'] = request.POST['age']
-            request.session['about'] = request.POST['fee']
-            request.session['about'] = request.POST['pincode']
+            request.session['age'] = request.POST['age']
+            request.session['fee'] = request.POST['fee']
+            request.session['pincode'] = request.POST['pincode']
             # request.session['teacher_phone_number']=request.POST['teacher_phone_number']
         except Exception:
             logging.exception("Name error in view")
@@ -97,6 +97,9 @@ def Create_teacher(request):
     print("calling create teacher")
     try:
         if request.user.is_authenticated:
+            print(request.user.id)
+            if is_user_teacher(request.user.id):
+                return HttpResponseRedirect(reverse('teacher:teacher_profile'))
             Name = request.session['name']
             Gender = request.session['gender']
             Experience = request.session['experience']
@@ -136,4 +139,9 @@ def Create_teacher(request):
         return HttpResponseRedirect(reverse('usermanager:login_page'))
     except Exception:
         logging.exception("create teacher in view")
-        return HttpResponseRedirect(reverse('teacher:teacher_page1'))
+        return HttpResponseRedirect(reverse('Home:error'))
+
+
+def Teacher_Profile(request):
+    return render(request, 'Teacher/TeacherProfile.html')
+    

@@ -1,17 +1,23 @@
 from .models import *
 import logging
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import MultipleObjectsReturned
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
 
 def IsUserTeacher(userid):
-    #This will check is a user is teacher or not
     try:
         Teacher.objects.get(User_id = userid)
         return True
-    except :
-        False
+    except MultipleObjectsReturned:
+        return True
+    except ObjectDoesNotExist:
+        return False
+    except Exception:
+        logging.info("Is teacher exist DAL")
+        
+        
 
 def IsTeacherExist(teacherid):
     #This function will check is teacher id already exits of not
