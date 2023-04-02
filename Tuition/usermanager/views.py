@@ -16,13 +16,11 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
 
 
 def registration(request):
-
     if request.method == 'POST':
         try:
             full_name = request.POST['full_name']
             email = request.POST['email']
             phone_number = request.POST['phone_number']
-
             if saveUser(full_name, email, phone_number):
                 request.session['phone_number'] = phone_number
                 return HttpResponseRedirect(reverse('usermanager:verify_otp'))

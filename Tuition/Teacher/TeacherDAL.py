@@ -8,8 +8,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
 
 def IsUserTeacher(userid):
     try:
-        Teacher.objects.get(User_id = userid)
-        return True
+        t = Teacher.objects.get(User_id = userid)
+        return t
     except MultipleObjectsReturned:
         return True
     except ObjectDoesNotExist:
@@ -75,3 +75,5 @@ def getLatestTeacher():
            logging.exception("Create teacher Teacher DAL") 
            return None    
     
+
+        

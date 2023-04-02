@@ -27,7 +27,7 @@ def post_tuition_page1(request):
                 return HttpResponseRedirect(reverse('tuition:post_tuition_page2'))
 
             if request.user.is_authenticated:
-                save_tuition(request)
+                return save_tuition(request)
             else:
                 request.session['redirect_url_name'] = 'tuition:save_tuition'
                 return HttpResponseRedirect(reverse('usermanager:login_page'))
@@ -79,7 +79,6 @@ def unlock_tuition(request):
             logging.info("Calling view of unlock tuition")
             if tution :
                 if request.user.credit_points > 0:
-                    print(request.user)
                     unlock_tuitions(request.user,tution)
                     return HttpResponseRedirect(reverse('Home:profile'))
                 else:
@@ -125,7 +124,7 @@ def save_tuition(request):
         return HttpResponseRedirect(reverse('usermanager:login_page'))
     except Exception:
         logging.exception("save tuition")  
-        return HttpResponseRedirect(reverse('tuition:post_tuition_page1'))
+        return HttpResponseRedirect(reverse('Home:error'))
     
     
 @login_required(login_url="usermanager/login_page")   

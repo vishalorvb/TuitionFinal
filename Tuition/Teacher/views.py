@@ -7,6 +7,10 @@ from django.urls import reverse
 
 
 def teacher_page1(request):
+    if request.user.is_authenticated and is_user_teacher(request.user.id):
+
+        print(Teacher)
+        return HttpResponseRedirect(reverse('teacher:teacher_profile'))
     if request.method == 'POST':
         try:
             request.session['name'] = request.POST['name']
@@ -50,7 +54,7 @@ def teacher_page2(request):
         return HttpResponseRedirect(reverse('teacher:teacher_page1'))
 
 
-@login_required(login_url="usermanager/login_page")
+@login_required(login_url="/usermanager/login_page")
 def unlock_teacher(request):
     if request.method == "GET":
         try:
@@ -142,6 +146,27 @@ def Create_teacher(request):
         return HttpResponseRedirect(reverse('Home:error'))
 
 
+@login_required(login_url="/usermanager/login_page")
 def Teacher_Profile(request):
-    return render(request, 'Teacher/TeacherProfile.html')
-    
+    Teacher = is_user_teacher(request.user.id)
+    print(Teacher.About)
+    if Teacher == False:
+        return HttpResponseRedirect(reverse('teacher:teacher_page1'))
+    if request.method == 'POST':
+        try:
+            Teacher.Name = request.POST['name']
+            Teacher.Experience = request.POST['experience']
+            Teacher.Location = request.POST['locality']
+            Teacher.Qualification = request.POST['qualification']
+            Teacher.Subject = request.POST['subject']
+            Teacher.classes = request.POST['classes']
+            Teacher.Pincode = request.POST['pincode']
+            Teacher.Teaching_mode = request.POST['mode']
+            Teacher.Age = request.POST['age']
+            Teacher.About = request.POST['about']
+            Teacher.save()
+            return HttpResponseRedirect(reverse('Home:profile'))
+        except Exception:
+            logging.exception("create teacher in view")
+            return HttpResponseRedirect(reverse('Home:error'))
+    return render(request, 'Teacher/TeacherProfile.html', {"Teacher": Teacher})

@@ -15,36 +15,36 @@
     {% include 'Home/navbar.html'%}
 
     <div class="allcontent">
-        <form action="{% url 'tuition:post_tuition_page2' %}" method="post">
+        <form action="{% url 'teacher:teacher_profile' %}" method="post">
             {% csrf_token %}
             <div class="row justify-content-around">
                 <div class="col-md-5 forms">
                     <div>
                         <label for="">Name</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" value={{Teacher.Name}} name="name" class="midinput">
 
                         <label for="">Experience</label>
-                        <input type="number" name="experience" class="form-control">
+                        <input type="number"value={{Teacher.Experience}}   name="experience" class="midinput">
 
                         <label for="">Locality</label>
-                        <input type="text" name="locality" class="form-control">
+                        <input type="text" value={{Teacher.Location}}  name="locality" class="midinput">
 
                         <label for="">Qualification</label>
-                        <input type="text" name="qualification" class="form-control">
+                        <input type="text" value={{Teacher.Qualification}}  name="qualification" class="midinput">
 
                         <label for="">Subject</label>
-                        <input type="text" name="subject" class="form-control">
+                        <input type="text"value={{Teacher.Subject}}   name="subject" class="midinput">
 
 
                         <label for="">Standard</label>
-                        <input type="text" name="classes" class="form-control">
+                        <input type="text"value={{Teacher.classes}}   name="classes" class="midinput">
 
                         <label for="">Pincode</label>
-                        <input type="text" name="pincode" class="form-control">
+                        <input type="text"value={{Teacher.Pincode}}   name="pincode" class="midinput">
 
                         <label for="">Teaching Mode :</label>
                         <label for="">Online</label>
-                        <input type="radio" class="form-check-input" value='online' name="mode">
+                        <input type="radio" class="form-check-input" checked value='online' name="mode">
                         <label for="">Offline</label>
                         <input type="radio" class="form-check-input" value='offline' name="mode"> 
                         <label for="">Both</label>
@@ -52,13 +52,13 @@
                         <br>
 
                         <label for="">Age</label>
-                        <input type="number" name="age" class="form-control">
+                        <input type="number"value={{Teacher.Age}}   name="age" class="midinput">
 
                         <label for="">Fee</label>
-                        <input type="number" name="fee" class="form-control">
+                        <input type="number" value={{Teacher.Fee}}  name="fee" class="midinput">
 
                         <label for="">About</label>
-                        <textarea class="form-control" name="about" rows="3"></textarea>
+                        <textarea class="form-control"   name="about" rows="3">{{Teacher.About}}</textarea>
 
                         <div class="row justify-content-around">
                             <div class="col-lg-11">
