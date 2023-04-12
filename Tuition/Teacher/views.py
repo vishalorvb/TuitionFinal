@@ -71,7 +71,7 @@ def unlock_teacher(request):
             return HttpResponseRedirect(reverse('Home:profile'))
         else:
             # redirect to payment page
-            return HttpResponse("no credits")
+            return HttpResponseRedirect(reverse('payment:payment'))
 
     try:
         teacher_id = int(request.GET['teacher_id'])
@@ -149,7 +149,7 @@ def Create_teacher(request):
 @login_required(login_url="/usermanager/login_page")
 def Teacher_Profile(request):
     Teacher = is_user_teacher(request.user.id)
-    print(Teacher.About)
+    print(Teacher)
     if Teacher == False:
         return HttpResponseRedirect(reverse('teacher:teacher_page1'))
     if request.method == 'POST':

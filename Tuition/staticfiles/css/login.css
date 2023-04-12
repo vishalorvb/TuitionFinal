@@ -1,0 +1,22 @@
+.outer{
+    background-image: url("../Images/form_outer.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.innerform{
+    width: 130vh;
+    min-height: 70vh;
+    background-color: var(--Light);
+    color: white;
+    margin: 50px;
+}
+.lefthalf{
+    min-height: 70vh;
+    background-image: url("../Images/pic2.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.righthalf{
+    padding: 10px;
+}
+

@@ -79,7 +79,7 @@
                                         <td>Courses</td>
                                         <td>Description</td>
                                         <td>Contact</td>
-                                        <td>Status</td>
+                                        <td>Status(Click to Change)</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,10 +93,9 @@
                                         <td>{{t.phone_number}}</td>
                                         {% if t.status%}
                                         <td><a href="/tuition/change_status?tuition_id={{t.id}}">Not
-                                                Found/click to change</a></td>
+                                                Found</a></td>
                                         {%else%}
-                                        <td><a href="/tuition/change_status?tuition_id={{t.id}}">Found/click
-                                                to change</a></td>
+                                        <td><a href="/tuition/change_status?tuition_id={{t.id}}">Found</a></td>
                                         {%endif%}
                                     </tr>
                                     {% endfor %}
@@ -104,36 +103,82 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="tabledata">
-                            <div class="col-lg-12">
-                                <div class="tableheading">
-                                    <h4>Your Unlocks</h4>
-                                </div>
-                                <div>
-                                    <table>
-
-                                    </table>
-                                </div>
-                            </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tabledata">
+                    <div class="col-lg-12">
+                        <div class="tableheading">
+                            <h4>Your Unlocks</h4>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="tabledata">
-                            <div class="col-lg-12">
-                                <div class="tableheading">
-                                    <h4>Teacher You  Unlock</h4>
-                                </div>
-                                <div>
-                                    <table>
-
-                                    </table>
-                                </div>
-                            </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Unlock Date</td>
+                                        <td>Student Name</td>
+                                        <td>Subject</td>
+                                        <td>Courses</td>
+                                        <td>Description</td>
+                                        <td>Contact</td>
+                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for t in UT %}
+                                    <tr>
+                                        <td>{{t.unlock_date}}</td>
+                                        <td>{{t.Tuition_id.student_name}}</td>
+                                        <td>{{t.Tuition_id.courses}}</td>
+                                        <td>{{t.Tuition_id.subject}}</td>
+                                        <td>{{t.Tuition_id.description}}</td>
+                                        <td>{{t.Tuition_id.phone_number}}</td>     
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="tabledata">
+                    <div class="col-lg-12">
+                        <div class="tableheading">
+                            <h4>Teacher You Unlock</h4>
+                        </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Unlock Date</td>
+                                        <td>Teacher Name</td>
+                                        <td>Subject</td>
+                                        <td>Qualification</td>
+                                        <td>Experience</td>
+                                        <td>Contact</td>
+                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for t in Teacher %}
+                                    <tr>
+                                        <td>{{t.unlock_date}}</td>
+                                        <td>{{t.Teacher_id.Name}}</td>
+                                        <td>{{t.Teacher_id.Subject}}</td>
+                                        <td>{{t.Teacher_id.Qualification}}</td>
+                                        <td>{{t.Teacher_id.Experience}}</td>
+                                        <td>{{t.Teacher_id.Phone_number}}</td>     
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 </body>
 
 </html>

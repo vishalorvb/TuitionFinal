@@ -12,7 +12,10 @@ def Home(request):
 def profile(request):
     mytution = getMytuition(request.user.id)
     mytuitionunlock = getMyUnlockTuition(request.user.id)
-    context = {"T":mytution,"UT":mytuitionunlock}
+    myteacher = getmyteacher(request.user.id)
+    print("my_teacher==============")
+    print(myteacher)
+    context = {"T":mytution,"UT":mytuitionunlock,"Teacher":myteacher}
     return render(request,'Home/profile.html',context)
 
 def error(request):

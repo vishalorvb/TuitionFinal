@@ -76,4 +76,11 @@ def getLatestTeacher():
            return None    
     
 
-        
+def getMyTeacher(userId):
+    try:
+        t= Teacher_unlock.objects.filter(User_id=userId)
+        return t
+    except Exception:
+        logging.exception("Create teacher Teacher DAL") 
+        return None
+            

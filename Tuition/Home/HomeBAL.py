@@ -1,5 +1,5 @@
 from Tuitionmanager.tuitionDAL import *
-
+from Teacher.TeacherDAL import getMyTeacher
 
 def getTuition():
     t = getLatestTuition()
@@ -12,3 +12,6 @@ def getMytuition(userid):
 
 def getMyUnlockTuition(userid):
     return Myunlocks(userid)
+
+def getmyteacher(userid):
+    return getMyTeacher(userid)

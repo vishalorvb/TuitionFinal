@@ -29,3 +29,6 @@ class Teacher_unlock(models.Model):
     Teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     User_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     unlock_date = models.DateField(default=datetime.now)
+    
+    def __str__(self):
+        return self.Teacher_id.Name

@@ -93,8 +93,6 @@ def MyTuition(userid):
 def Myunlocks(userid):
     try:
         t = Tuition_unlock.objects.filter(User_id=userid)
-        print("Printing unlock tuition table")
-        print(t)
         return t
     except:
         return None    
