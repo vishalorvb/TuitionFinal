@@ -26,7 +26,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
 
 
 def getorderdetails(request):
-    
     if request.method == "GET":
         try:
             plan_code = request.GET["plan"] 
@@ -60,7 +59,6 @@ def Create_payment_order(request):
     silver_price = 0
     gold_price = 0
     for plan in plans:
-        print(plan.plan_code)
         if plan.plan_code == "1":
             silver_price = plan.price/100
         if plan.plan_code == "2":
