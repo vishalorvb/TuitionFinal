@@ -1,15 +1,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
-<script>
-    function home() {
-        console.log("Home clicked")
-        window.location = "/"
-    }
-</script>
-
-
 <div class="topnav" id="myTopnav">
-    <img src="{% static 'images/logo.png' %}" alt="img" onclick="home()">
+    <a href="/" style="float:left;border:none"><img src="{% static 'images/logo.png' %}" alt="img"></a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <span style='font-size:20px;'>&#9776;</span>
     </a>

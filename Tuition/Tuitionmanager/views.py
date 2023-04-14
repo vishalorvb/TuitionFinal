@@ -82,9 +82,7 @@ def unlock_tuition(request):
                     unlock_tuitions(request.user,tution)
                     return HttpResponseRedirect(reverse('Home:profile'))
                 else:
-                    return HttpResponseRedirect(reverse('Home:profile'))
-                    # write code here to redirect to payment page
-                   
+                    return HttpResponseRedirect(reverse('payment:payment'))           
             else:
                 return HttpResponseRedirect(reverse('Home:error'))
         except Exception:

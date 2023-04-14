@@ -28,6 +28,9 @@ def unlock_tuitions(user,tution):
            cp = user.credit_points
            user.credit_points = cp -1
            user.save()
+           unlock  = tution.unlocks
+           tution.unlocks = unlock + 1
+           tution.save()
            return True
         else:
            return False  
