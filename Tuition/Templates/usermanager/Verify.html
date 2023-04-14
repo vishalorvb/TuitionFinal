@@ -1,9 +1,10 @@
 
+{% extends "../Home/index.html" %}
 
+{% block title %}Verify OTP{% endblock title %}
+{% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-{% include 'Home/navbar.html'%}
-
 <div class="outer">
     <div class="row align-items-center justify-content-lg-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
@@ -35,6 +36,5 @@
             </div>
         </div>
     </div>
-
 </div>
-{% include 'Home/footer.html'%}
+{% endblock content %}

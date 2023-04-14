@@ -1,76 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Teacherprofile.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-    <title>teacher profile</title>
-</head>
+{% extends "../Home/index.html" %}
 
-<body>
-    {% include 'Home/navbar.html'%}
+{% block title %}Teacher{% endblock title %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/Teacherprofile.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<div class="allcontent">
+    <form action="{% url 'teacher:teacher_profile' %}" method="post">
+        {% csrf_token %}
+        <div class="row justify-content-around">
+            <div class="col-md-5 forms">
+                <div>
+                    <label for="">Name</label>
+                    <input type="text" value={{Teacher.Name}} name="name" class="midinput">
 
-    <div class="allcontent">
-        <form action="{% url 'teacher:teacher_profile' %}" method="post">
-            {% csrf_token %}
-            <div class="row justify-content-around">
-                <div class="col-md-5 forms">
-                    <div>
-                        <label for="">Name</label>
-                        <input type="text" value={{Teacher.Name}} name="name" class="midinput">
+                    <label for="">Experience</label>
+                    <input type="number" value={{Teacher.Experience}} name="experience" class="midinput">
 
-                        <label for="">Experience</label>
-                        <input type="number"value={{Teacher.Experience}}   name="experience" class="midinput">
+                    <label for="">Locality</label>
+                    <input type="text" value={{Teacher.Location}} name="locality" class="midinput">
 
-                        <label for="">Locality</label>
-                        <input type="text" value={{Teacher.Location}}  name="locality" class="midinput">
+                    <label for="">Qualification</label>
+                    <input type="text" value={{Teacher.Qualification}} name="qualification" class="midinput">
 
-                        <label for="">Qualification</label>
-                        <input type="text" value={{Teacher.Qualification}}  name="qualification" class="midinput">
-
-                        <label for="">Subject</label>
-                        <input type="text"value={{Teacher.Subject}}   name="subject" class="midinput">
+                    <label for="">Subject</label>
+                    <input type="text" value={{Teacher.Subject}} name="subject" class="midinput">
 
 
-                        <label for="">Standard</label>
-                        <input type="text"value={{Teacher.classes}}   name="classes" class="midinput">
+                    <label for="">Standard</label>
+                    <input type="text" value={{Teacher.classes}} name="classes" class="midinput">
 
-                        <label for="">Pincode</label>
-                        <input type="text"value={{Teacher.Pincode}}   name="pincode" class="midinput">
+                    <label for="">Pincode</label>
+                    <input type="text" value={{Teacher.Pincode}} name="pincode" class="midinput">
 
-                        <label for="">Teaching Mode :</label>
-                        <label for="">Online</label>
-                        <input type="radio" class="form-check-input" checked value='online' name="mode">
-                        <label for="">Offline</label>
-                        <input type="radio" class="form-check-input" value='offline' name="mode"> 
-                        <label for="">Both</label>
-                        <input type="radio" class="form-check-input" value='both' name="mode">
-                        <br>
+                    <label for="">Teaching Mode :</label>
+                    <label for="">Online</label>
+                    <input type="radio" class="form-check-input" checked value='online' name="mode">
+                    <label for="">Offline</label>
+                    <input type="radio" class="form-check-input" value='offline' name="mode">
+                    <label for="">Both</label>
+                    <input type="radio" class="form-check-input" value='both' name="mode">
+                    <br>
 
-                        <label for="">Age</label>
-                        <input type="number"value={{Teacher.Age}}   name="age" class="midinput">
+                    <label for="">Age</label>
+                    <input type="number" value={{Teacher.Age}} name="age" class="midinput">
 
-                        <label for="">Fee</label>
-                        <input type="number" value={{Teacher.Fee}}  name="fee" class="midinput">
+                    <label for="">Fee</label>
+                    <input type="number" value={{Teacher.Fee}} name="fee" class="midinput">
 
-                        <label for="">About</label>
-                        <textarea class="form-control"   name="about" rows="3">{{Teacher.About}}</textarea>
+                    <label for="">About</label>
+                    <textarea class="form-control" name="about" rows="3">{{Teacher.About}}</textarea>
 
-                        <div class="row justify-content-around">
-                            <div class="col-lg-11">
-                                <input type="submit" class="submitbutton" value="Update">
-                            </div>
+                    <div class="row justify-content-around">
+                        <div class="col-lg-11">
+                            <input type="submit" class="submitbutton" value="Update">
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
-    {% include 'Home/footer.html'%}
-</body>
-
-</html>
+        </div>
+    </form>
+</div>
+{% endblock content %}

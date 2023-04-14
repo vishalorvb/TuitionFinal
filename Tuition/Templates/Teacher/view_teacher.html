@@ -1,87 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "../Home/index.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher</title>
+{% block title %}Teacher{% endblock title %}
+{% block content %}
 {%load static %}
-</head>
-
-<body>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Teacher.css' %}">
-    {% include 'Home/navbar.html'%}
-    <div class="tution">
-        {% for teacher in Teachers %}
-        <div class="tution_body">
-            <div class="tution_body_head">
-                <div class="tb_inner">
-                    <h1>{{teacher.Name}}</h1>
-                </div>
-                <div class="tb_inner">
-                    <h2> Age:{{teacher.Age}}-{{teacher.Gender}} </h2>
-                </div>
-                <!-- <div class="tb_inner">
-                    <h2><i class="material-icons" style="font-size:20px">place</i> {{teacher.location}}</h2>
-                </div> -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/Teacher.css' %}">
+<div class="tution">
+    {% for teacher in Teachers %}
+    <div class="tution_body">
+        <div class="tution_body_head">
+            <div class="tb_inner">
+                <h1>{{teacher.Name}}</h1>
             </div>
-            <div class="tution_body_content">
-                <div class="tb_neck">
-                    <div class="tb_neck_inner">
-                        <h3><b>Experience: {{teacher.Experience}} Year</b></h3>
-                    </div>
-                    <div class="tb_neck_inner">
-                        <p><b>Fee: {{teacher.Fee}} /Hr</b></p>
-                    </div>
-                </div>
-            </div>
-            <div class="table_info">
-                <div class="info">
-                    
-                </div>
-                <div class="info">
-                    <table>
-                        <tr>
-                            <td>Qualificatin:</td>
-                            <td>{{teacher.Qualification}}</td>
-                        </tr>
-                        <tr>
-                            <td>Subject:</td>
-                            <td>{{teacher.Subject}} </td>
-                        </tr>
-                        <tr>
-                            <td>Class:</td>
-                            <td>{{teacher.classes}}</td>
-                        </tr>
-                        <tr>
-                            <td>Availability:</td>
-                            <td>{{teacher.Teaching_mode}}</td>
-                        </tr>
-                        <tr>
-                            <td>Locality:</td>
-                            <td>{{teacher.Location}}</td>
-                        </tr>
-                        <tr>
-                            <td>Pincode:</td>
-                            <td>{{teacher.Pincode}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="view-details">
-                <button><a href="/teacher/unlock_teacher?teacher_id={{teacher.id}}">View Contact</a></button>
-            </div>
-            <div class="description">
-                <p><b>ABOUT: {{teacher.About}}
-                    
-                    </b></p>
+            <div class="tb_inner">
+                <h2> Age:{{teacher.Age}}-{{teacher.Gender}} </h2>
             </div>
         </div>
-        {% endfor %}
-    </div>
-    {% include 'Home/footer.html'%}
-    
-</body>
+        <div class="tution_body_content">
+            <div class="tb_neck">
+                <div class="tb_neck_inner">
+                    <h3><b>Experience: {{teacher.Experience}} Year</b></h3>
+                </div>
+                <div class="tb_neck_inner">
+                    <p><b>Fee: {{teacher.Fee}} /Hr</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="table_info">
+            <div class="info">
 
-</html>
+            </div>
+            <div class="info">
+                <table>
+                    <tr>
+                        <td>Qualificatin:</td>
+                        <td>{{teacher.Qualification}}</td>
+                    </tr>
+                    <tr>
+                        <td>Subject:</td>
+                        <td>{{teacher.Subject}} </td>
+                    </tr>
+                    <tr>
+                        <td>Class:</td>
+                        <td>{{teacher.classes}}</td>
+                    </tr>
+                    <tr>
+                        <td>Availability:</td>
+                        <td>{{teacher.Teaching_mode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Locality:</td>
+                        <td>{{teacher.Location}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pincode:</td>
+                        <td>{{teacher.Pincode}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="view-details">
+            <button><a href="/teacher/unlock_teacher?teacher_id={{teacher.id}}">View Contact</a></button>
+        </div>
+        <div class="description">
+            <p><b>ABOUT: {{teacher.About}}
+
+                </b></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

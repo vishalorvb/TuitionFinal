@@ -23,7 +23,7 @@ def post_tuition_page1(request):
             request.session['locality'] = " "
 
 
-            if request.POST['mode'] == "offline":
+            if request.POST['mode'] != "online":
                 return HttpResponseRedirect(reverse('tuition:post_tuition_page2'))
 
             if request.user.is_authenticated:
@@ -35,7 +35,7 @@ def post_tuition_page1(request):
             logging.exception("Error in Post request of post tuition page1 view")
             return HttpResponseRedirect(reverse('Home:error'))
 
-    return render(request, 'Tuition/post_tuition_page1.html')
+    return render(request, 'Tuition/page1.html')
 
 
 
@@ -46,7 +46,7 @@ def post_tuition_page2(request):
             request.session['locality'] = request.POST['locality']
         except Exception:
             logging.exception("Accessing session in post tuition page 2")  
-            return HttpResponseRedirect(reverse('tuition:post_tuition_page1'))  
+            return HttpResponseRedirect(reverse('tuition:page1'))  
         
         
         if request.user.is_authenticated:
@@ -57,7 +57,7 @@ def post_tuition_page2(request):
             return HttpResponseRedirect(reverse('usermanager:login_page'))
     try:
         x = request.session['pincode']
-        return render(request, 'tuition/post_tuition_page2.html')
+        return render(request, 'tuition/page2.html')
 
     except:
         return HttpResponseRedirect(reverse('tuition:post_tuition_page1'))

@@ -1,7 +1,8 @@
+{% extends "../Home/index.html" %}
+{% block title %}Login{% endblock title %}
+{% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-{% include 'Home/navbar.html'%}
-
 <div class="outer">
     <div class="row align-items-center justify-content-lg-center">
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-6">
@@ -9,23 +10,23 @@
                 <div class="row align-items-center justify-content-lg-center">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="lefthalf">
-                          
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="righthalf">
                             <form action="{% url 'usermanager:login_page' %}" method="post">
-                            {% csrf_token %}
-                            <div class="col-12">
-                                <label for="Enter Phone Number">Enter Phone Number</label>
-                            </div>
-                            <div class="col-12">
-                                <input class="midinput" type="text" name="phone_number">
-                            </div>
-                            <div class="col-12">
-                                <input class="submitbutton" type="submit" value="Get OTP">
-                            </div>
-                            <p>{{error}}</p>
+                                {% csrf_token %}
+                                <div class="col-12">
+                                    <label for="Enter Phone Number">Enter Phone Number</label>
+                                </div>
+                                <div class="col-12">
+                                    <input class="midinput" type="text" name="phone_number">
+                                </div>
+                                <div class="col-12">
+                                    <input class="submitbutton" type="submit" value="Get OTP">
+                                </div>
+                                <p>{{error}}</p>
                             </form>
                         </div>
                     </div>
@@ -35,4 +36,4 @@
     </div>
 
 </div>
-{% include 'Home/footer.html'%}
+{% endblock content %}

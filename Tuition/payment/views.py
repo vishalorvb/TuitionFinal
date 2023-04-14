@@ -56,19 +56,19 @@ def getorderdetails(request):
 # @login_required(login_url="/usermanager/login")
 def Create_payment_order(request):
     plans = get_plan()
-    silver_price = 0
-    gold_price = 0
+    silver = {"price":0,"credit":0}
+    gold = {"price":0,"credit":0}
     for plan in plans:
         if plan.plan_code == "1":
-            silver_price = plan.price/100
+            silver["price"] = plan.price/100
+            silver["credit"] = plan.points
         if plan.plan_code == "2":
-            gold_price = plan.price/100
+            gold["price"] = plan.price/100
+            gold["credit"] = plan.points
     context = {
-        "silver":silver_price,
-        "gold":gold_price
-    }        
-            
-    print("plan price",silver_price,gold_price)    
+        "silver":silver,
+        "gold":gold
+    }           
     return render(request, 'payment/payment_page.html',context)
 
 

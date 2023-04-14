@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-</head>
 
-<body>
-    {% include 'Home/navbar.html'%}
+{% extends "../Home/index.html" %}
+
+{% block title %}Teacher{% endblock title %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
     <div class="formcontainer">
         <form action="{% url 'teacher:teacher_page1' %}" method="post">
             {% csrf_token %}
@@ -47,7 +41,4 @@
             </div>
         </form>
     </div>
-    {% include 'Home/footer.html'%}
-</body>
-
-</html>
+    {% endblock content %}
