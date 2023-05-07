@@ -89,9 +89,9 @@ def verify_payment(request):
             }
             temp = verify_paymentBAL(params_dict)
             if temp:
-                return HttpResponse("SuccessFull")
+                return HttpResponseRedirect(reverse('Home:profile'))
             else:
-                return HttpResponse("Fail")
+                return HttpResponseRedirect(reverse('Home:error'))
             
            
         except:

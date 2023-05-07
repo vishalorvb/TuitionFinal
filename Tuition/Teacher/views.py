@@ -13,10 +13,10 @@ def teacher_page1(request):
         return HttpResponseRedirect(reverse('teacher:teacher_profile'))
     if request.method == 'POST':
         try:
-            request.session['name'] = request.POST['name']
-            request.session['mode'] = request.POST['mode']
-            request.session['subject'] = request.POST['subject']
-            request.session['class'] = request.POST['class']
+            request.session['name'] = request.POST['teacher_name']
+            request.session['mode'] = request.POST['teacher_mode']
+            request.session['subject'] = request.POST['teacher_subject']
+            request.session['class'] = request.POST['teacher_class']
             return HttpResponseRedirect(reverse('teacher:teacher_page2'))
         except Exception:
             # request.session.clear()

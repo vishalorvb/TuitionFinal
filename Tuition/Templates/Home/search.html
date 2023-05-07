@@ -1,7 +1,8 @@
 {% load static %}
 
 <div class="search">
-    <form action="" method="post">
+    <form action="{% url 'Home:error' %}" method="post" onsubmit="return validateForm(['pincode'],'error')">
+        {% csrf_token %}
         <div class="row justify-content-around">
             <div class="col-lg-1">
                 <label for="pincode">Pincode</label>

@@ -3,8 +3,8 @@
     border-radius: 5px;
     margin: 2px;
     padding: 10px;
-    color: white;
-    background-color: var(--Light);
+    /* color: white; */
+    background-color:  var(--Fade);
 
     font-size: 20px;
     font-weight: 600;

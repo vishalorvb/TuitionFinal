@@ -4,27 +4,21 @@
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 import environ
 env = environ.Env()
 environ.Env.read_env(BASE_DIR/ '.env')
 TEMP_DIR = BASE_DIR/'Templates'
-STATIC_DIR = BASE_DIR / 'static'
 
 
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(env('DEBUG'))
+# DEBUG = int(env('DEBUG'))
+DEBUG = True
+
+
 print("Debug is",DEBUG)
 # DEBUG = True
 
@@ -33,7 +27,6 @@ ALLOWED_HOSTS = ["*"]
 AUTH_USER_MODEL = 'usermanager.CustomUser'
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -82,8 +75,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Tuition.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -98,10 +89,6 @@ DATABASES = {
         }
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -118,10 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -132,17 +115,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_DIR = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     STATIC_DIR,
 ]
-
-
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

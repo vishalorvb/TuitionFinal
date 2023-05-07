@@ -1,3 +1,13 @@
 from django.db import models
 
-# Create your models here.
+class pincodes(models.Model):
+    Pincode = models.IntegerField(null=False,unique=True)
+    Devision = models.CharField(max_length=100,null=False)
+    Region = models.CharField(max_length=100,null=False)
+    Circle = models.CharField(max_length=100,null=False)
+    Taluk = models.CharField(max_length=100,null=False)
+    District = models.CharField(max_length=100,null=False)
+    State = models.CharField(max_length=100,null=False)
+    
+    def __str__(self):
+        return str(self.Pincode)

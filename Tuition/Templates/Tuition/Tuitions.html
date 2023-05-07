@@ -31,17 +31,17 @@
                 </div>
                 <div class="tution_body_content">
                     <div class="row justify-content-around">
-                        <div class="col-lg-4 col-md-4 col-s-4">
+                        <div class="col-lg-4 col-md-6">
                             <div class="tb_neck_inner">
                                 <p><b>Posted on: {{t.posted_date}}</b></p>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-s-4">
+                        <div class="col-lg-4 col-md-4 ">
                             <div class="tb_neck_inner">
                                 <p><b>Fee: {{t.fee}} /Hr</b></p>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-s-4">
+                        <div class="col-lg-4 col-md-2 ">
                             <div class="tb_neck_inner">
                                 <p><b>View: {{t.unlocks}}</b></p>
                             </div>
@@ -50,12 +50,7 @@
                 </div>
                 {% if t.verify %}
                 <div class="verify">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" 
-                    style="color:rgb(64, 12, 107);"
-                     fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-                        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-                        
-                      </svg>
+                    <object data="{% static 'images/tick.png' %}" width="40" height="40"> </object>
                    
                 </div>   
                 {% endif %}
@@ -89,7 +84,7 @@
                 </div>
                 <div class="description">
                     <div class="row">
-                        <div class="col-lg-10 col-md-10 col-s-10">
+                        <div class="col-lg-10 col-md-10 col-sm-10">
                             <p>
                                 <b>
                                     Description:{{t.description}}
@@ -102,4 +97,4 @@
         </div>
         {% endfor %}
     </div>
-<{% endblock content %}
+{% endblock content %}

@@ -53,14 +53,12 @@
   }
   .description {
     margin: 2px;
-    padding: 2px;
+    padding: 4px;
    border: 1px solid black;
    border-radius: 5px;
-   background-color: var(--Dark);
+   background-color: var(--Fade);
    margin: 10px 10px 5px 5px;
-   text-align: center;
    height:60px;
-   color: white;
   }
   .view-details button{
     background-color: var(--Dark);;
