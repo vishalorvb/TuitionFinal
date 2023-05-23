@@ -8,7 +8,7 @@
 <div class="cont">
     <div class="row justify-content-around">
         <div class="col-md-6 forms ">
-            <form action="{% url 'usermanager:registration' %}" method="post">
+            <form onsubmit="return validateForm(['full_name','phone_number','email'],'error')" action="{% url 'usermanager:registration' %}" method="post">
                 {% csrf_token %}
                 <label for="">Full Name</label>
                 <input type="text" class="midinput" name="full_name">

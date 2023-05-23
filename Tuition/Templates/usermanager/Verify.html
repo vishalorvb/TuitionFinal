@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <div class="righthalf">
-                            <form action="{% url 'usermanager:verify_otp' %}" method="post">
+                            <form onsubmit="return validateForm(['otp'],'error')" action="{% url 'usermanager:verify_otp' %}" method="post">
                             {% csrf_token %}
                             <div class="col-12">
                                 <label for="">Enter OTP</label>

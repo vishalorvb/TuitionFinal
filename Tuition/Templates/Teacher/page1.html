@@ -7,7 +7,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
     <div class="formcontainer">
-        <form action="{% url 'teacher:teacher_page1' %}" method="post">
+        <form onsubmit="return validateForm(['teacher_name','teacher_subject','teacher_class','teacher_mode'],'error')" action="{% url 'teacher:teacher_page1' %}" method="post">
             {% csrf_token %}
             <div class="row justify-content-center">
                 <div class="col-md-5 forms">
