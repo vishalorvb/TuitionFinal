@@ -26,7 +26,7 @@ def getLatestTuition():
         
 def getAllTuition():
     try:
-        t = tuitions = Tuitions.objects.filter(status = True).order_by('-posted_date')[:100]
+        t = Tuitions.objects.filter(status = True).order_by('-posted_date')[:100]
         return t
     except Exception:
         logging.exception("getlatestTuition")   

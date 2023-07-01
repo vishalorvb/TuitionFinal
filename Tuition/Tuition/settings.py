@@ -16,7 +16,7 @@ TEMP_DIR = BASE_DIR/'Templates'
 SECRET_KEY = env('SECRET_KEY')
 
 # DEBUG = int(env('DEBUG'))
-DEBUG = True
+DEBUG = False
 
 
 print("Debug is",DEBUG)
