@@ -5,4 +5,5 @@ urlpatterns=[
     re_path(r'^$',views.Home,name='Home'), 
     re_path(r'^error$',views.error,name='error'), 
     re_path(r'^profile$',views.profile,name='profile'), 
+    re_path(r'^test$',views.test,name='test'),
 ]

@@ -4,7 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-# from .models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
@@ -77,3 +76,6 @@ def verify_otp(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('Home:Home'))
+
+
+

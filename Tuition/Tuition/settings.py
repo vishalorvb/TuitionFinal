@@ -1,7 +1,4 @@
 
-
-
-
 from pathlib import Path
 
 
@@ -16,11 +13,7 @@ TEMP_DIR = BASE_DIR/'Templates'
 SECRET_KEY = env('SECRET_KEY')
 
 # DEBUG = int(env('DEBUG'))
-DEBUG = False
-
-
-print("Debug is",DEBUG)
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -116,9 +109,6 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_DIR = BASE_DIR / 'static'
-# STATIC_ROOT = BASE_DIR / "staticfiles"
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     STATIC_DIR,
@@ -142,3 +132,7 @@ API_KEY =env('API_KEY')
 RAZOR_KEY_ID =env('RAZOR_KEY_ID')
 RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
 
+
+# Base url to serve media files  
+MEDIA_URL = '/media/'   
+MEDIA_ROOT = BASE_DIR/'media'  
