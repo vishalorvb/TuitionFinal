@@ -57,3 +57,12 @@ color: var(--Dark);
     margin: 2px;
     padding: 2px;
 }
+
+.editbutton{
+    float: right;
+    border: none;
+    background-color:var(--Dark) ;
+    color: white;
+    padding: 10px;
+    font-weight: 800;
+}

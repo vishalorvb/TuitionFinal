@@ -26,5 +26,4 @@ def error(request):
 
 
 def test(request):
-    send_Email(subject="Test Email",message="Hi bro\n"+"How are you",receiver_list=["kumarvishal70760@outlook.com"])
     return HttpResponse("Hello")
