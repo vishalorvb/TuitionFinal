@@ -14,12 +14,6 @@
                       <a href="{% url 'Home:editProfile' %}">Edit &#x270E;</a>
                     </div>
                     <img src="{{user.profilepic.url}}" alt="img">
-                    <form action="{% url 'Home:editProfile' %}" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input type="file" name="pic">
-                        <input type="text" name="name">
-                        <button type="submit">Submit</button>
-                    </form>
                     <table class="table">
                         <tbody>
                             <tr>
