@@ -31,3 +31,4 @@ def updatePassword(phone):
 
 def is_tuitionid_exist(id):
     return IsTuitionIdExist(id)       
+

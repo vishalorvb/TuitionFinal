@@ -11,9 +11,15 @@
             <div class="col-lg-4 col-md-4">
                 <div class="userinfo">
                     <div class="heading">
-                        <Button class="editbutton">Edit &#x270E;</Button>
+                      <a href="{% url 'Home:editProfile' %}">Edit &#x270E;</a>
                     </div>
-                    <img src="/media/{{user.profilepic}}" alt="img">
+                    <img src="{{user.profilepic.url}}" alt="img">
+                    <form action="{% url 'Home:editProfile' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="pic">
+                        <input type="text" name="name">
+                        <button type="submit">Submit</button>
+                    </form>
                     <table class="table">
                         <tbody>
                             <tr>
@@ -169,4 +175,4 @@
             </div>
         </div>
 
-        {% endblock content %}  
+        {% endblock content %}

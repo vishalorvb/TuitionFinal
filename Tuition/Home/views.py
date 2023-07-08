@@ -21,6 +21,25 @@ def profile(request):
     context = {"T":mytution,"UT":mytuitionunlock,"Teacher":myteacher}
     return render(request,'Home/profile.html',context)
 
+
+def editProfile(request):
+    if request.method == "POST":
+        user = request.user
+        name = request.POST['name']
+        file  = request.FILES['pic']
+        file.name = str(user.id)+"__"+str(user.phone_number)
+        print("======================",file.size)
+        print("File is",dir(file))
+        user.Full_name = name
+        user.profilepic = file
+        user.save()
+        return render(request,'Home/profile.html')
+    return render(request,'Home/updateProfile.html')
+    
+    
+
+
+
 def error(request):
     return render(request,'Home/Errorpage.html')
 

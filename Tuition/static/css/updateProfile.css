@@ -1,0 +1,15 @@
+.formborder{
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    padding: 10px;
+}
+
+.formborder img{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    padding: 4px;
+    
+    }

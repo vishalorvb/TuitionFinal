@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
+    'storages',
     'Home',
     'usermanager',
     'Tuitionmanager',
@@ -134,5 +135,15 @@ RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
 
 
 # Base url to serve media files  
-MEDIA_URL = '/media/'   
+MEDIA_URL = '/mediafvhmh/'   
 MEDIA_ROOT = BASE_DIR/'media'  
+
+
+# Azure Storage account configuration
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = 'profilephoto'
+AZURE_ACCOUNT_KEY = 'ZkbP9qJXCdxw+HmuuMdOKP4PulVGOGicZVxNvb14/Hj2USB3s2Cydz8x4ZJ3uj6a/mSWS8yQ78cu+AStIXYb8A=='
+AZURE_CONTAINER = 'profilepic'
+AZURE_OVERWRITE_FILES = True
+
+# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'

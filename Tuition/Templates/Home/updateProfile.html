@@ -1,0 +1,39 @@
+{% extends "../Home/index.html" %}
+{% block title %}Update Profile{% endblock title %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/updateProfile.css' %}">
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-4">
+      <div class="formborder">
+        <form  action="{% url 'Home:editProfile' %}"
+          method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <div class="col-12">
+            <img src="{{user.profilepic.url}}" alt="img" id="preview-image">
+            <input type="file" name="pic" onchange="previewImage(event)" >
+          </div>
+          <div class="col-12"></div>
+          Email:{{user.email}}
+          <div class="col-12">
+            Contact:{{user.phone_number}}
+          </div><br>
+          <div class="col-12">
+            <label for="">Full Name</label>
+          </div>
+          <div class="col-12">
+            <input class="midinput" type="text" name="name">
+          </div>
+          <div class="col-12">
+            <input class="submitbutton" type="submit" value="Update Profile">
+          </div>
+          <p>{{error}}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/handleImage.js' %}"></script>
+{% endblock content %}
