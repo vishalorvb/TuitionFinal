@@ -110,7 +110,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_DIR = BASE_DIR / 'static'
-STATIC_URL = '/static/'
+STATIC_URL = '/mystatic/'
 STATICFILES_DIRS =[
     STATIC_DIR,
 ]
@@ -134,10 +134,6 @@ RAZOR_KEY_ID =env('RAZOR_KEY_ID')
 RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
 
 
-# Base url to serve media files  
-MEDIA_URL = '/mediafvhmh/'   
-MEDIA_ROOT = BASE_DIR/'media'  
-
 
 # Azure Storage account configuration
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
@@ -146,4 +142,3 @@ AZURE_ACCOUNT_KEY = 'ZkbP9qJXCdxw+HmuuMdOKP4PulVGOGicZVxNvb14/Hj2USB3s2Cydz8x4ZJ
 AZURE_CONTAINER = 'profilepic'
 AZURE_OVERWRITE_FILES = True
 
-# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'

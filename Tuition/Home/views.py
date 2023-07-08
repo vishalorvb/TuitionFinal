@@ -10,9 +10,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 def Home(request):
     tuitions = getTuition()
-    # return HttpResponse("hello")
     return render(request,'Home/home.html',{'tuitions':tuitions})
-    # return render(request,'Home/home.html')
 
 
 

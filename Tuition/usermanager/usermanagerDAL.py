@@ -24,7 +24,6 @@ def AddUser(name,email,password,phone,points):
     try:
         CustomUser.object.create_user(Full_name=name, phone_number=phone, email=email, password=password, credit_points=points)
     except Exception:
-        print("something went wrong in save user ")
         logging.exception("password not update in DAL")
         
         

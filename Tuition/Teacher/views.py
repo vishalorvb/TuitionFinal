@@ -8,8 +8,6 @@ from django.urls import reverse
 
 def teacher_page1(request):
     if request.user.is_authenticated and is_user_teacher(request.user.id):
-
-        print(Teacher)
         return HttpResponseRedirect(reverse('teacher:teacher_profile'))
     if request.method == 'POST':
         try:
@@ -65,8 +63,6 @@ def unlock_teacher(request):
         except:
             return HttpResponseRedirect(reverse('Home:error'))
         if request.user.credit_points > 0:
-            print("have credit points")
-            print(request.user)
             unlock_teacherBAL(request.user, teacher)
             return HttpResponseRedirect(reverse('Home:profile'))
         else:
@@ -80,7 +76,6 @@ def unlock_teacher(request):
         if points > 0:
             request.user.credit_points = points - 1
             request.user.save()
-            print(request.user.credit_points)
             Tu = Teacher_unlock.objects.create(
                 Teacher_id=teacher, User_id=request.user)
             Tu.save()
@@ -98,10 +93,8 @@ def view_teacher(request):
 
 
 def Create_teacher(request):
-    print("calling create teacher")
     try:
         if request.user.is_authenticated:
-            print(request.user.id)
             if is_user_teacher(request.user.id):
                 return HttpResponseRedirect(reverse('teacher:teacher_profile'))
             Name = request.session['name']
@@ -149,7 +142,6 @@ def Create_teacher(request):
 @login_required(login_url="/usermanager/login_page")
 def Teacher_Profile(request):
     Teacher = is_user_teacher(request.user.id)
-    print(Teacher)
     if Teacher == False:
         return HttpResponseRedirect(reverse('teacher:teacher_page1'))
     if request.method == 'POST':

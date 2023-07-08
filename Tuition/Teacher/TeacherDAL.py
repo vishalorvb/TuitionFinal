@@ -59,7 +59,6 @@ def CreateTeacher(Name, Gender, Experience, location,
         return False
     
 def UnlockTeacher(user,teacher):
-    print("unlock DAL")
     try:
         Teacher_unlock.objects.create(Teacher_id = teacher,User_id = user)
         return True
