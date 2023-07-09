@@ -8,7 +8,8 @@
     <div class="col-4">
       <div class="formborder">
         <form  action="{% url 'Home:editProfile' %}"
-          method="post" enctype="multipart/form-data">
+          method="post" enctype="multipart/form-data"
+          onsubmit="return validateForm(['name'],'error')">
           {% csrf_token %}
 
           <div class="col-12">
@@ -35,5 +36,5 @@
     </div>
   </div>
 </div>
-<script src="{% static 'js/handleImage.js' %}"></script>
+<script src="{% static 'Js/handleImage.js' %}"></script>
 {% endblock content %}

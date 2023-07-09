@@ -23,6 +23,7 @@ def profile(request):
     return render(request,'Home/profile.html',context)
 
 
+@login_required(login_url="/usermanager/login")
 def editProfile(request):
     if request.method == "POST":
         user = request.user

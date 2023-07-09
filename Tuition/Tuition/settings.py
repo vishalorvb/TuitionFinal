@@ -13,7 +13,7 @@ TEMP_DIR = BASE_DIR/'Templates'
 SECRET_KEY = env('SECRET_KEY')
 
 # DEBUG = int(env('DEBUG'))
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -142,3 +142,7 @@ AZURE_ACCOUNT_KEY = 'ZkbP9qJXCdxw+HmuuMdOKP4PulVGOGicZVxNvb14/Hj2USB3s2Cydz8x4ZJ
 AZURE_CONTAINER = 'profilepic'
 AZURE_OVERWRITE_FILES = True
 
+
+STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'
