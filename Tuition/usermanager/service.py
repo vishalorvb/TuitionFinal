@@ -27,4 +27,4 @@ def send_otp(phone_number):
 
 def send_Email(subject, message, receiver_list):
     email_from = settings.EMAIL_HOST_USER
-    send_mail(subject, message, email_from, receiver_list)
+    send_mail(subject, message, email_from, receiver_list,fail_silently=True,)

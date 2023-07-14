@@ -6,7 +6,7 @@
 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
-
+<script src="{% static 'Js/Api.js' %}" defer></script>
 <div class="formcontainer">
     <form 
     onsubmit="return validateForm(['pincode','locality',],'error')"
@@ -16,7 +16,8 @@
             <div class="col-md-5 forms">
                 <div>
                     <label for="">Pincode</label>
-                    <input type="number" name="pincode" class="form-control">
+                    <input type="number" name="pincode" class="form-control"  
+                   placeholder="Enter Pincode" onchange="pincode()"/>
                     <label for="">Locality</label>
                     <input type="text" name="locality" class="form-control">
  
@@ -24,11 +25,11 @@
                         <div class="col-lg-11">
                             <input type="submit" class="submitbutton" value="Get Free Demo Class">
                         </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
+<script src="{% static 'Js/Api.js' %}"></script>
 {% endblock content %}

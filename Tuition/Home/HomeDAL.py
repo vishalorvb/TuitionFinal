@@ -6,3 +6,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
 
+
+def isPincode(pincode):
+    try:
+        pin = pincodes.objects.get(Pincode = pincode)
+        return pin
+    except Exception:
+        return False

@@ -1,5 +1,6 @@
 from Tuitionmanager.tuitionDAL import *
 from Teacher.TeacherDAL import getMyTeacher
+from .HomeDAL import *
 
 def getTuition():
     t = getLatestTuition()
@@ -16,3 +17,8 @@ def getMyUnlockTuition(userid):
 def getmyteacher(userid):
     return getMyTeacher(userid)
 
+def isPincodeExist(pincode):
+    if isPincode(pincode):
+        return True
+    else:
+        return False

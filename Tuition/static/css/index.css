@@ -126,5 +126,13 @@ a:link {
     align-items: center;
 }
 
-
+.profilepic{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    padding: 4px;
+    
+    }
 

@@ -6,8 +6,9 @@ from usermanager.service import send_Email
 from PIL import Image,ImageOps
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
-
-
+from django.views.decorators.csrf import csrf_exempt
+import json
+from utility.useful import usefulPrint,encrypt_string,decrypt_string
 def Home(request):
     tuitions = getTuition()
     return render(request,'Home/home.html',{'tuitions':tuitions})
@@ -39,14 +40,22 @@ def editProfile(request):
     return render(request,'Home/updateProfile.html')
     
     
-
+def isPincode(request):
+    pin = isPincodeExist(request.GET["pincode"])
+    response ={"exist":pin}
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
 
 def error(request):
     return render(request,'Home/Errorpage.html')
 
 
-def test(request):
+@csrf_exempt
+def test(request): 
+    # send_Email("Domo","Hii",["kumarvishal70760@outlookqfn.com"]) 
+    usefulPrint()    
+    encrypt_string("Hello")
+    decrypt_string(encrypt_string("Hello"))
     return HttpResponse("Hello")
 
 

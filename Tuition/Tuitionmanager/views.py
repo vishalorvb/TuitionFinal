@@ -60,7 +60,9 @@ def post_tuition_page2(request):
         return render(request, 'tuition/page2.html')
 
     except:
-        return HttpResponseRedirect(reverse('tuition:post_tuition_page1'))
+        # return HttpResponseRedirect(reverse('tuition:post_tuition_page1'))
+        return render(request, 'tuition/page2.html')
+        
     
     
 

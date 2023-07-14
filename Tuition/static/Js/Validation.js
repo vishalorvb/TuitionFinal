@@ -21,5 +21,3 @@
     });
     return status;
 }
-
-// comment
