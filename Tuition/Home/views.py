@@ -8,7 +8,10 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.views.decorators.csrf import csrf_exempt
 import json
-from utility.useful import usefulPrint,encrypt_string,decrypt_string
+from utility.useful import encryption
+from django.conf import settings
+
+
 def Home(request):
     tuitions = getTuition()
     return render(request,'Home/home.html',{'tuitions':tuitions})
@@ -52,10 +55,8 @@ def error(request):
 
 @csrf_exempt
 def test(request): 
-    # send_Email("Domo","Hii",["kumarvishal70760@outlookqfn.com"]) 
-    usefulPrint()    
-    encrypt_string("Hello")
-    decrypt_string(encrypt_string("Hello"))
+    encypt = encryption(settings.SECRET_KEY)
+    print(encypt.encrypt_string("Vishal"))
     return HttpResponse("Hello")
 
 
