@@ -1,5 +1,4 @@
 from cryptography.fernet import Fernet
-from django.conf import settings
 import base64
 import hashlib
 
@@ -19,7 +18,7 @@ class encryption():
         return padded_key  
     
     def __init__(self,secret_key):
-        self.key =convert_to_32_byte_key(secret_key) 
+        self.key =encryption.convert_to_32_byte_key(secret_key) 
         
     def encrypt_string(self,input_string):
         cipher = Fernet(self.key)
@@ -34,3 +33,4 @@ class encryption():
         decrypted_bytes = cipher.decrypt(encrypted_bytes)
         decrypted_string = decrypted_bytes.decode()
         return decrypted_string
+    

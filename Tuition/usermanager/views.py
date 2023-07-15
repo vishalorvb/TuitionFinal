@@ -78,4 +78,6 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('Home:Home'))
 
 
-
+def verify_email(request,link):
+    print("========================",link)
+    return HttpResponse("verify email not working")
