@@ -16,7 +16,7 @@ from usermanager.usermanagerBAL import sendVerificationLink
 
 def Home(request):
     tuitions = getTuition()
-    return render(request, 'Home/home.html', {'tuitions': tuitions})
+    return render(request, 'Home/home.html')
 
 
 @login_required(login_url="/usermanager/login")

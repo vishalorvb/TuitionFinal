@@ -17,7 +17,7 @@ def addTuition(posted_date, user, student_name, phone_number, course, subject, d
         return False
 
 def getLatestTuition():
-    try:
+    try:  
         t = Tuitions.objects.filter(status = True).order_by('-posted_date')[:10]
         return t
     except Exception:

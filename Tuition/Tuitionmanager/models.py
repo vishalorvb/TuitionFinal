@@ -1,6 +1,7 @@
 from django.db import models
 from usermanager.models import CustomUser
 from datetime import datetime 
+from Home.models import pincodes
 
 class Tuitions(models.Model):
     posted_date = models.DateField(default=datetime.now)
@@ -13,7 +14,7 @@ class Tuitions(models.Model):
     description = models.CharField(max_length=150, null=True, blank=True)
     teaching_mode = models.CharField(max_length=10)
     fee = models.CharField(max_length=10, null=True, blank=True)
-    pincode = models.IntegerField(null=True, blank=True)
+    pincode = models.ForeignKey(pincodes, on_delete=models.DO_NOTHING, default=0)
     locality = models.CharField(max_length=60, null=True, blank=True)
     unlocks = models.IntegerField(null=True, blank=True,default=0)
     verify = models.BooleanField(default=False)

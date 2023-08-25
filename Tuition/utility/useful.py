@@ -28,9 +28,12 @@ class encryption():
         return encrypted_string
     
     def decrypt_string(self,encrypted_string):
-        cipher = Fernet(self.key)
-        encrypted_bytes = encrypted_string.encode()
-        decrypted_bytes = cipher.decrypt(encrypted_bytes)
-        decrypted_string = decrypted_bytes.decode()
-        return decrypted_string
+        try:
+            cipher = Fernet(self.key)
+            encrypted_bytes = encrypted_string.encode()
+            decrypted_bytes = cipher.decrypt(encrypted_bytes)
+            decrypted_string = decrypted_bytes.decode()
+            return decrypted_string
+        except :
+           return None
     

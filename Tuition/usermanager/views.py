@@ -10,6 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.urls import reverse
 import logging
 from .usermanagerBAL import *
+import urllib.parse
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -79,5 +80,8 @@ def user_logout(request):
 
 
 def verify_email(request,link):
-    print("========================",link)
-    return HttpResponse("verify email not working")
+    val = verifyEmail(urllib.parse.unquote(link))
+    if val:
+        return HttpResponse("Verified")
+    else:
+        return HttpResponse("Fail") 

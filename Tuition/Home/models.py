@@ -1,7 +1,7 @@
 from django.db import models
 
 class pincodes(models.Model):
-    Pincode = models.IntegerField(null=False,unique=True)
+    Pincode = models.IntegerField(primary_key=True)
     Devision = models.CharField(max_length=100,null=False)
     Region = models.CharField(max_length=100,null=False)
     Circle = models.CharField(max_length=100,null=False)

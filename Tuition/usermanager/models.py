@@ -11,6 +11,9 @@ class CustomUser(AbstractUser):
     email = models.EmailField(max_length=60,null=True  , blank=True)
     credit_points = models.IntegerField(default=0)
     profilepic = models.ImageField(upload_to='profilepic',default="profilepic/profilepic.png")
+    is_teacher = models.BooleanField(default=False)
+    is_email_varified = models.BooleanField(default=False)
+    link_token = models.CharField(max_length=255,unique=True,null=True) 
     username = None
     first_name = None
     last_name= None

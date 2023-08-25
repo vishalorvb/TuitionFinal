@@ -1,6 +1,8 @@
 from django.db import models
 from usermanager.models import CustomUser
 from datetime import datetime 
+from Home.models import pincodes
+
 
 class Teacher(models.Model):
     Join_date = models.DateField(default=datetime.now)
@@ -12,11 +14,11 @@ class Teacher(models.Model):
     Subject = models.CharField(max_length=20)
     classes = models.CharField(max_length=30)
     About = models.CharField(max_length=300)
-    User_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    User_id = models.ForeignKey(CustomUser, on_delete=models.DO_NOTHING)
     Premium = models.BooleanField(default=False)
     Teaching_mode = models.CharField(max_length=10)
     Phone_number = models.CharField(max_length=12)
-    Pincode = models.IntegerField(default=0000)
+    Pincode = models.ForeignKey(pincodes, on_delete=models.DO_NOTHING, default=0)
     Age = models.IntegerField(default=0)
     Fee = models.CharField(max_length=5, default=0)
     Photo = models.ImageField(upload_to = 'images/',null=True)

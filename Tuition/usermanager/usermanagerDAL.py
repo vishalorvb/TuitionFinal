@@ -18,11 +18,11 @@ def IsEmailExist(email):
         return True
     except Exception :
         logging.exception("DAL IsEmailExist")
-        False
+        return False
 
-def AddUser(name,email,password,phone,points):
+def AddUser(name,email,password,phone,points,link):
     try:
-        CustomUser.object.create_user(Full_name=name, phone_number=phone, email=email, password=password, credit_points=points)
+        CustomUser.object.create_user(Full_name=name, phone_number=phone, email=email, password=password, credit_points=points,link_token=link)
     except Exception:
         logging.exception("password not update in DAL")
         
@@ -40,6 +40,45 @@ def update_password(phone,password):
         logging.exception("password not update in DAL")
         return False
        
-# def updateCredit(user):
-#     try:
-#         u = CustomUser.object.get(id = )       
+def get_user(id):
+    try:
+        user = CustomUser.object.get(id = id)
+        return user
+    except Exception :
+        logging.exception("DAL IsEmailExist")
+        return False
+ 
+    
+def get_user_bylink(link):
+    try:
+        user = CustomUser.object.get(link_token = token)
+        return user
+    except :
+        return False
+    
+# def is_email_verified(link):
+#     user = get_user_bylink(link)
+    
+             
+         
+def save_email_link(userId,link):
+    user = get_user(userId)
+    if user:
+        user.link_token = link
+        user.save()
+        return True
+    else:
+        return False         
+
+
+    
+def verify_email(token):
+    user = CustomUser.object.get(link_token = token)
+    user.is_email_varified = True
+    user.save()
+    return True
+
+        
+    
+    
+    
