@@ -19,10 +19,11 @@ def saveUser(name,email,phone):
         otp = send_otp(phone)
         if otp:
             link = encryption(settings.SECRET_KEY).encrypt_string(str(phone))
-            AddUser(name=name, phone=phone, email=email, password=otp, points=2,link=link)
+            AddUser(name=name, phone=phone, email=email, password=otp, points=6,link=link)
             sendVerificationLink(name,[email],link)
             return True
         else:
+            logging.error("Invalid Phone Number")
             return False
 
 

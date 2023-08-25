@@ -3,27 +3,41 @@
 {% block title %}Verify OTP{% endblock title %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-<div class="container">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-6">
-            <form onsubmit="return validateForm(['otp'],'error')" action="{% url 'usermanager:verify_otp' %}"
-                method="post">
-                {% csrf_token %}
-                <div class="col-12">
-                    <label for="">Enter OTP</label>
-                </div>
-                <div class="col-12">
-                    <input class="midinput" type="text" name="otp">
-                </div>
-                <div class="col-12">
-                    <input class="submitbutton" type="submit" value="Verify OTP">
-                </div>
-                <p>{{error}}</p>
-            </form>
-        </div>
-    </div>
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+<div class="header">
+    <h1 style="font-size: 36px;">&#8220;Discover Limitless Learning Opportunities &#8221; </h1>
+    <p style="font-size: 20px; margin-top: 10px;"> Empower your education journey with our platform that seamlessly
+        connects students and teachers. Explore freelance teaching opportunities, post tuition listings for free,
+        and enjoy complimentary demo classes.</p>
 </div>
 
+<div class="registration-container">
+    <div class="registration-left">
+        <div class="features">
+            <h1><span class="features-heading">Welcome back</span></h1>
+            <ul>
+                <li>&#x261B; Find Freelancing Teacher Jobs</li>
+                <li>&#x261B; Post Tuitions for Free</li>
+                <li>&#x261B; Get 3 Free Demo Classes</li>
+                <li>&#x261B; Discover Qualified and Verified Teachers</li>
+                
+            </ul>
+        </div>
+    </div>
+    <div class="registration-right">
+        <div class="registration-form">
+            <h2>Enter OTP</h2>
+            <form  action="{% url 'usermanager:verify_otp' %}" method="post">
+                {% csrf_token %}
+                <label for="phoneNumber">OTP</label>
+                <input type="text" name="otp" required pattern="[0-9]{4,}" title="Please enter OTP">
+                <p style="color: red;">{{error}}</p>
+                <button type="submit">Verify OTP</button>
+                <p>Not registered yet? <a href="{% url 'usermanager:registration' %}">Register here</a></p>
+        </div>
+        </form>
+    </div>
+</div>
+</div>
 
 {% endblock content %}

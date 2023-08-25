@@ -17,13 +17,13 @@
         <div class="features">
             <h1><span class="features-heading">Register And Get 6 Credit FREE</span></h1>
             <ul>
-                <li>&#x261B; Find Freelancing Teacher Jobs</li>
-                <li>&#x261B; Post Tuitions for Free</li>
-                <li>&#x261B; Get 3 Free Demo Classes</li>
-                <li>&#x261B; Discover Qualified and Verified Teachers</li>
-                <li>&#x261B; Connect with Local Teachers for In-Person Learning</li>
-                <li>&#x261B; 24/7 Customer Support for Any Assistance</li>
-                <li>&#x261B; Access a Wide Range of Subjects and Skills</li>
+                <li>&#x27A9; Find Freelancing Teacher Jobs</li>
+                <li>&#x27A9; Post Tuitions for Free</li>
+                <li>&#x27A9; Get 3 Free Demo Classes</li>
+                <li>&#x27A9; Discover Qualified and Verified Teachers</li>
+                <li>&#x27A9; Connect with Local Teachers for In-Person Learning</li>
+                <li>&#x27A9; Customer Support for Any Assistance</li>
+                <li>&#x27A9; Access a Wide Range of Subjects and Skills</li>
             </ul>
         </div>
     </div>
@@ -35,11 +35,12 @@
                 <label for="fullname">Full Name</label>
                 <input type="text"  name="full_name" required>
                 <label for="phoneNumber">Phone Number</label>
-                <input type="text" id="phoneNumber" name="phone_number" required pattern="[0-9]{10,}" title="Please enter a valid 10-digit phone number">
+                <input type="text"  name="phone_number" required pattern="[0-9]{10,}" title="Please enter a valid 10-digit phone number">
                 <label for="email">Email</label>
                 <input type="email" name="email" required>
+                <p style="color: red;">{{error}}</p>
                 <button type="submit">Register</button>
-                <p>Already have an account? <a href="login.html">Login</a></p>
+                <p>Already have an account? <a href="{% url 'usermanager:login_page' %}">Login</a></p>
         </div>
         </form>
     </div>

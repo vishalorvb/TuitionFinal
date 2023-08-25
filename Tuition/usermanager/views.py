@@ -37,7 +37,6 @@ def login_page(request):
         return HttpResponseRedirect(reverse('Home:Home'))
     if request.method == 'POST':
         try:
-            # This try block is to check if someone modify name's in form
             phone_number = request.POST['phone_number']
             if updatePassword(phone_number):
                 request.session['phone_number'] = phone_number
