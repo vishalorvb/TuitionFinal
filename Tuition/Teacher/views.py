@@ -151,7 +151,8 @@ def Teacher_Profile(request):
             Teacher.Qualification = request.POST['qualification']
             Teacher.Subject = request.POST['subject']
             Teacher.classes = request.POST['classes']
-            Teacher.Pincode = request.POST['pincode']
+            # Teacher.Pincode = request.POST['pincode']
+            Teacher.Pincode =None if isPincode(request.POST['pincode'])==False else isPincode(request.POST['pincode'])
             Teacher.Teaching_mode = request.POST['mode']
             Teacher.Age = request.POST['age']
             Teacher.About = request.POST['about']
@@ -160,4 +161,5 @@ def Teacher_Profile(request):
         except Exception:
             logging.exception("create teacher in view")
             return HttpResponseRedirect(reverse('Home:error'))
+    print(Teacher.Name)
     return render(request, 'Teacher/TeacherProfile.html', {"Teacher": Teacher})
