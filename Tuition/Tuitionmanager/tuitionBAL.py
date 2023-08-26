@@ -1,13 +1,14 @@
 from .tuitionDAL import *
 from datetime import date
+from Home.HomeDAL import isPincode
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
 
-def saveTuition(user, student_name, phone_number, course, subject, description, teaching_mode, fee, pincode=0000, locality= ''):
+def saveTuition(user, student_name, phone_number, course, subject, description, teaching_mode, fee, pincode=None, locality= ''):
     try:
         posted_date = date.today()
-        return addTuition(posted_date, user, student_name, phone_number, course, subject, description, teaching_mode, fee, pincode, locality)
+        return addTuition(posted_date, user, student_name, phone_number, course, subject, description, teaching_mode, fee,locality, pincode)
     except Exception:
         logging.exception("saveTuition in tuitionBAL")
         return False
@@ -51,5 +52,7 @@ def change_status_of_tuition(userid,tutionid):
     else:
         return False
     
-        
+    
+def isPincodeExists(pin):
+    return  isPincode(pin)    
         

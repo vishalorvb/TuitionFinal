@@ -19,7 +19,7 @@ def post_tuition_page1(request):
             request.session['description'] = request.POST['description']
             request.session['fee'] = request.POST['fee']
             request.session['mode'] = request.POST['mode']
-            request.session['pincode'] = 0000
+            request.session['pincode'] = None
             request.session['locality'] = " "
 
 
@@ -104,7 +104,9 @@ def save_tuition(request):
             mode = request.session['mode']
             pincode = request.session['pincode']
             locality = request.session['locality']
-            
+            pin = isPincodeExists(pincode)
+            if pincode != None and pin == False:
+                return render(request, 'tuition/page2.html',{"error": "Invalid Pincode "})
             # Deleting session
             del(request.session['student_name'] )
             del(request.session['student_phone_number'] )
@@ -116,7 +118,7 @@ def save_tuition(request):
             del(request.session['pincode']) 
             del(request.session['locality']) 
             
-            t = saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=subject, teaching_mode=mode, fee=fee,pincode=pincode,locality=locality)
+            t = saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=subject, teaching_mode=mode, fee=fee,pincode=pin,locality=locality)
             if t:
                 return HttpResponseRedirect(reverse('Home:profile'))
             else:

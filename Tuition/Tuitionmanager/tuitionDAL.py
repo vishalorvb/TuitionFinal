@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
 
-def addTuition(posted_date, user, student_name, phone_number, course, subject, description, teaching_mode, fee, pincode, locality):
+def addTuition(posted_date, user, student_name, phone_number, course, subject, description, teaching_mode, fee,  locality, pincode=None,):
     try:
         new_tuition = Tuitions.objects.create(
             posted_date=posted_date, user_id=user, student_name=student_name, phone_number=phone_number,course=course,subject=subject,description=description,teaching_mode=teaching_mode,fee=fee,pincode=pincode,locality=locality)
@@ -97,4 +97,4 @@ def Myunlocks(userid):
     except:
         return None    
         
-        
+
