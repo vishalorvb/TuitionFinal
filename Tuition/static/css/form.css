@@ -163,3 +163,28 @@
     text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 28px;
+    }
+    
+    .header p {
+        font-size: 16px;
+    }
+
+    .registration-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .registration-left,
+    .registration-right {
+        flex: initial;
+        padding: 20px;
+    }
+
+    .registration-form {
+        max-width: 100%;
+    }
+}

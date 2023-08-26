@@ -5,11 +5,10 @@
     font-family: 'Faustina';
 }
 
-.row {
+/* .row {
     width: 99%;
-    /* margin-left: 20px; */
     margin: auto;
-}
+} */
 
 .form-control{
     border: 2px solid black !important;
@@ -106,6 +105,7 @@ a:link {
     position: fixed;
     width: 100%;
     z-index: 2;
+
 }
 .foot {
     margin-top: auto;
@@ -121,9 +121,9 @@ a:link {
 
 .content {
     min-height: 85vh;
-    margin-top: 60px;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 .profilepic{

@@ -4,7 +4,7 @@
 /* ######################################*/
 /* ############## NavBar css #############*/
 /* ######################################*/
-
+/* 
 .topnav {
     background-color: var(--Dark);
     overflow: hidden;
@@ -78,4 +78,92 @@
         text-align: left;
         padding-right: 20px;
     }
-}
+} */
+
+.navbar {
+    background-color: var(--Dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    padding-right: 12px;
+    width: 100%;
+  }
+ 
+ 
+ 
+  .navbar-logo img {
+    height: 40px; /* Adjust the height as needed */
+    width: 40px;
+    border-radius: 50%;
+  }
+ 
+  .navbar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+ 
+  .navbar-menu li {
+    margin: 0 10px;
+    
+    
+  }
+ 
+  .navbar-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+  }
+ 
+  /* Hamburger menu styles */
+  .navbar-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--Dark);
+    color: white;
+    font-size: 18px;
+  }
+  .navbar-menu a:hover {
+    text-decoration: underline;
+  }
+
+  /* Responsive styles */
+  @media screen and (max-width: 600px) {
+    .navbar {
+      text-align: right;
+    }
+   
+    .navbar-menu {
+      display: none;
+    }
+   
+    .navbar-menu.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 44px;
+      right: 0;
+      background-color: var(--Dark);
+      width: 100%;
+      text-align: center;
+    }
+   
+    .navbar-menu li {
+      margin: 0;
+    }
+   
+    .navbar-menu li a {
+      padding: 10px;
+    }
+   
+    .navbar-toggle {
+      display: block;
+    }
+  }
