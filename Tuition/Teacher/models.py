@@ -18,7 +18,7 @@ class Teacher(models.Model):
     Premium = models.BooleanField(default=False)
     Teaching_mode = models.CharField(max_length=10)
     Phone_number = models.CharField(max_length=12)
-    Pincode = models.ForeignKey(pincodes, on_delete=models.DO_NOTHING, default=0)
+    Pincode = models.ForeignKey(pincodes, on_delete=models.DO_NOTHING, null=True,default=None)
     Age = models.IntegerField(default=0)
     Fee = models.CharField(max_length=5, default=0)
     Photo = models.ImageField(upload_to = 'images/',null=True)

@@ -17,8 +17,6 @@ def teacher_page1(request):
             request.session['class'] = request.POST['teacher_class']
             return HttpResponseRedirect(reverse('teacher:teacher_page2'))
         except Exception:
-            # request.session.clear()
-
             logging.exception("Name error in view")
             return HttpResponseRedirect(reverse('Home:error'))
     return render(request, 'Teacher/page1.html')
@@ -110,6 +108,7 @@ def Create_teacher(request):
             Age = request.session['age']
             Fee = request.session['fee']
             Pincode = request.session['pincode']
+            pin = None if isPincode(Pincode)==False else isPincode(Pincode) 
             # request.session.clear()
             del request.session['gender']
             del request.session['experience']
@@ -127,7 +126,7 @@ def Create_teacher(request):
                                    Location=location, Qualification=Qualification, Subject=Subject, classes=classes,
                                    About=About, User_id=User_id, Teaching_mode=Teaching_mode,
                                    Phone_number=request.user.phone_number,
-                                   Age=Age, Fee=Fee, Pincode=Pincode)
+                                   Age=Age, Fee=Fee, Pincode=pin)
             if teacher:
                 return HttpResponseRedirect(reverse('Home:profile'))
             else:
