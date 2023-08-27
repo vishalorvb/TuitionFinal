@@ -151,7 +151,6 @@ def Teacher_Profile(request):
             Teacher.Qualification = request.POST['qualification']
             Teacher.Subject = request.POST['subject']
             Teacher.classes = request.POST['classes']
-            # Teacher.Pincode = request.POST['pincode']
             Teacher.Pincode =None if isPincode(request.POST['pincode'])==False else isPincode(request.POST['pincode'])
             Teacher.Teaching_mode = request.POST['mode']
             Teacher.Age = request.POST['age']
