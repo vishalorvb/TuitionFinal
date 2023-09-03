@@ -1,38 +1,9 @@
 
-
-.userinfo{
-    border: 2px solid var(--Dark);
-    padding: 10px;
-    border-radius: 2px;
-}
-
-.profile{
-    margin: 2px;
-    padding: 2px;
-}
-
-.userinfo a, .buy a{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    background-color: var(--Dark);
-    color: white;
-    padding: 10px;
-    font-size: 25px;
+.tableheading{
+    border: 2px solid var(--Light);
     border-radius: 5px;
+    color: var(--Dark);
 }
-
-
-.userinfo img{
-height: 150px;
-width: 150px;
-border-radius: 50%;
-margin: auto;
-display: block;
-padding: 4px;
-
-}
-
 
 .creditinfo{
     padding: 10px;
@@ -46,23 +17,56 @@ padding: 4px;
     color: var(--Dark);
 }
 
-
-.tableheading{
-border: 2px solid var(--Light);
-border-radius: 5px;
-color: var(--Dark);
-
+.userinfo {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    position: relative;
 }
-.tabledata{
-    margin: 2px;
-    padding: 2px;
+.edit-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #3498db;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+.edit-link:hover {
+    color: #2980b9;
+}
+.userinfo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+}
+.table {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.table td {
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
 }
 
-.editbutton{
-    float: right;
-    border: none;
-    background-color:var(--Dark) ;
+.become-teacher-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
     color: white;
-    padding: 10px;
-    font-weight: 800;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
 }
+.become-teacher-link:hover {
+    background-color: #2980b9;
+}
+
+

@@ -22,3 +22,8 @@ def isPincodeExist(pincode):
         return True
     else:
         return False
+    
+    
+def getPincode(pin):
+    return getLikePincode(pin)
+    

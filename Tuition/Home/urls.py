@@ -8,4 +8,6 @@ urlpatterns=[
     re_path(r'^editProfile$',views.editProfile,name='editProfile'), 
     re_path(r'^pincodeexist$',views.isPincode,name='pincodeexist'), 
     re_path(r'^test$',views.test,name='test'),
+    re_path(r'^getPincode$',views.getPin,name='getPin'), 
+   
 ]

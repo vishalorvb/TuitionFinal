@@ -13,3 +13,15 @@ def isPincode(pincode):
         return pin
     except Exception:
         return False
+    
+    
+    
+def getLikePincode(pin):
+    val = pincodes.objects.filter(Pincode__startswith=pin).values('Pincode')
+    return val
+
+    
+
+
+
+  

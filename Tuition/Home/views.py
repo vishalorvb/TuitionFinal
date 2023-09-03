@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from utility.useful import encryption
 from django.conf import settings
-
+from django.core import serializers
 
 from usermanager.usermanagerBAL import sendVerificationLink
 
@@ -74,9 +74,13 @@ def reSizeImage(input_image, output_size):
     return resized_image
 
 
-
+def getPin(request):
+    pin = request.GET["pincode"]
+    matching_pincodes = getPincode(pin)
+    data_list = list(matching_pincodes)
+    json_data = json.dumps(data_list)
+    return HttpResponse(json_data, content_type="application/json")
 
 @csrf_exempt
 def test(request):
-    sendVerificationLink("sidhemaut",["kumarvishal70760@outlook.com"],"tHIS IS LINK")
     return HttpResponse("Hello")
