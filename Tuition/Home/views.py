@@ -81,6 +81,12 @@ def getPin(request):
     json_data = json.dumps(data_list)
     return HttpResponse(json_data, content_type="application/json")
 
+def getCity(request):
+    cityName = request.GET["city"]
+    cityList = getDistrictBAl(cityName)
+    json_data = json.dumps(cityList)
+    return HttpResponse(json_data, content_type="application/json")
+
 @csrf_exempt
 def test(request):
     return HttpResponse("Hello")

@@ -21,7 +21,11 @@ def getLikePincode(pin):
     return val
 
     
-
+def getDistrict(dis):
+    distinct_districts = pincodes.objects.filter(District__icontains=dis).values('District').distinct()
+    print(distinct_districts)
+    distinct_district_names = [{'city': district["District"]} for district in distinct_districts]
+    return distinct_district_names
 
 
   

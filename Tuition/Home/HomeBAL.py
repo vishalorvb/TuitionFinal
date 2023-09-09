@@ -26,4 +26,8 @@ def isPincodeExist(pincode):
     
 def getPincode(pin):
     return getLikePincode(pin)
+
+def getDistrictBAl(dis):
+    return getDistrict(dis)
+
     

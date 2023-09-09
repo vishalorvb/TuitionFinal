@@ -18,7 +18,12 @@ inputField.addEventListener("blur", (e) => {
     }, 100);
 })
 inputField.addEventListener("input", (e) => {
-    e.target.value.length>2 && getPincode(e.target.value)
+    if(searchType.value == '1' && e.target.value.length > 2){
+        getPincode(e.target.value)
+    }
+    if(searchType.value == '2'){
+        getCity(e.target.value)
+    }
 })
 
 
@@ -29,20 +34,30 @@ for (var i = 0; i < listItems.length; i++) {
 }
 
 
-function pincode() {
-    // axios.get("https://jsonplaceholder.typicode.com/todos/1").then(res=>{
-    //     console.log(res)
-    // })
-    console.log("Funcyiom")
-}
+
 
 function getPincode(pin) {
     suggestionList.innerHTML = ""
     axios.get(`http://127.0.0.1:8000/getPincode?pincode=${pin}`).then(res => {
         res.data.forEach(element => {
-            console.log(element.Pincode)
             var newLi = document.createElement("li");
             newLi.textContent = element.Pincode;
+            suggestionList.appendChild(newLi);
+        });
+        for (var i = 0; i < listItems.length; i++) {
+            listItems[i].addEventListener("click", function () {
+                inputField.value = this.textContent
+            });
+        }
+    })
+}
+
+function getCity(city) {
+    suggestionList.innerHTML = ""
+    axios.get(`http://127.0.0.1:8000/getCity?city=${city}`).then(res => {
+        res.data.forEach(element => {
+            var newLi = document.createElement("li");
+            newLi.textContent = element.city;
             suggestionList.appendChild(newLi);
         });
         for (var i = 0; i < listItems.length; i++) {
