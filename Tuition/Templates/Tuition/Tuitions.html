@@ -5,10 +5,31 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/Tuitions.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <div class="row justify-content-md-center">
+    <div >
+        <div class="search">
+            <div>
+                <label for="searchType">Pincode/City</label>
+                <select name="searchType" id="searchType">
+                    <option value="1" selected>Pincode</option>
+                    <option value="2">City</option>
+                </select>
+            </div>
+            <div style="position:relative">
+                <label for="searchInput" id="inputLabel">Pincode</label>
+                <input type="text" id="searchInput" name="searchInput">
+                <div class="suggestion" id="suggestionListdiv">
+                    <ul id="suggestionList">
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="Submit" >
+            </div>
+
+        </div>
+        <h4 class="heading-display">Find teacher jobs and tuition services in your city.</h4>
         {% for t in tuitions %}
-        <div class="col-lg-6 col-md-6">
+        {% comment %} <div class="col-lg-6 col-md-6">
             <div class="tution_body">
                 <div class="tution_body_head">
                     <div class="row">
@@ -94,7 +115,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
         {% endfor %}
     </div>
+    <script src="{% static 'Js/Api.js' %}"></script>
 {% endblock content %}
