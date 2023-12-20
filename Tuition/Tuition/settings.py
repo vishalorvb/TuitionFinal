@@ -10,7 +10,7 @@ TEMP_DIR = BASE_DIR/'Templates'
 
 
 
-SECRET_KEY = "kniofiwfiwjncqdiocnivjiqieqfcnnqefne7yqe7t366r3r37&TY&G*G"
+SECRET_KEY = env('SECRET_KEY')
 
 # DEBUG = int(env('DEBUG'))
 DEBUG = True
@@ -69,7 +69,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Tuition.wsgi.application'
 
 
+#Custom database configuration
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',  
+#        'NAME': env('DB_NAME'),  
+#        'USER': env('DB_USER'),  
+#        'PASSWORD': env('DB_PASSWORD'),  
+#        'HOST': env('DB_HOST'),  
+#        'PORT': env('DB_PORT'),  
+#        'OPTIONS': {  
+#            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+#        }
+#    }
+#}
+
+
+#Default database confguration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -112,19 +129,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ''' sending email '''
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST ="smtp.gmail.com"
-EMAIL_PORT =587
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST =env('EMAIL_HOST')
+EMAIL_PORT =int(env('EMAIL_PORT'))
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER ="example@gmail.com"
-EMAIL_HOST_PASSWORD ="password"
+EMAIL_HOST_USER =env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD =env('EMAIL_HOST_PASSWORD')
 
 # 2factor api secret key 
-API_KEY ="apikey"
+API_KEY =env('API_KEY')
 
 #razorpay credential
-RAZOR_KEY_ID ='RAZOR_KEY_ID'
-RAZOR_KEY_SECRET ='RAZOR_KEY_SECRET'
+RAZOR_KEY_ID =env('RAZOR_KEY_ID')
+RAZOR_KEY_SECRET =env('RAZOR_KEY_SECRET')
 
 
 
@@ -135,3 +152,7 @@ AZURE_ACCOUNT_KEY = 'ZkbP9qJXCdxw+HmuuMdOKP4PulVGOGicZVxNvb14/Hj2USB3s2Cydz8x4ZJ
 AZURE_CONTAINER = 'profilepic'
 AZURE_OVERWRITE_FILES = True
 
+
+# STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+# AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'
