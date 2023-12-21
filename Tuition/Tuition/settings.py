@@ -11,9 +11,10 @@ TEMP_DIR = BASE_DIR/'Templates'
 
 
 SECRET_KEY = env('SECRET_KEY')
-
 # DEBUG = int(env('DEBUG'))
 DEBUG = True
+ENVIRONMENT_NAME = "dev"
+URL = "http://127.0.0.1:8000/"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'storages',
+    'rest_framework',
     'Home',
     'usermanager',
     'Tuitionmanager',

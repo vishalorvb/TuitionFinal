@@ -11,6 +11,9 @@ from django.urls import reverse
 import logging
 from .usermanagerBAL import *
 import urllib.parse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -84,3 +87,48 @@ def verify_email(request,link):
         return HttpResponse("Verified")
     else:
         return HttpResponse("Fail") 
+
+
+#############################################################
+######################## API ################################
+#############################################################
+    
+
+@api_view(['POST'])
+def createUser(request):
+    try:
+        full_name = request.data['full_name']
+        email = request.data['email']
+        phone_number = request.data['phone_number']
+        if saveUser(full_name, email, phone_number):
+            message = "User created successfully."
+            return Response({"message": message}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"message": "Failed to create user."}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception:
+            logging.exception("Registration post request")
+            return Response({"message": "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
+    
+
+
+def updateProfile(request):
+    pass
+
+
+@api_view(['POST'])
+def sendOtp(request):
+    try:
+        phone_number = request.data['phone_number']
+        if updatePassword(phone_number):
+            message = "OTP sent successfully."
+            return Response({"message": message}, status=status.HTTP_200_OK)
+        else:
+            return Response({"message": "Failed to send OTP."}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception:
+            logging.exception("Registration post request")
+            return Response({"message": "Internal Server Error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR) 
+
+
+@api_view(['POST'])
+def login(request):
+    pass

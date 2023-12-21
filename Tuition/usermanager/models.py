@@ -4,6 +4,9 @@ from django.forms import CharField
 from .manager import *
 
 
+class Role(models.Model):
+    roleId = models.IntegerField()
+    roleName = models.CharField(max_length=55)
 
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=12 , unique=True)
@@ -14,6 +17,7 @@ class CustomUser(AbstractUser):
     is_teacher = models.BooleanField(default=False)
     is_email_varified = models.BooleanField(default=False)
     link_token = models.CharField(max_length=255,unique=True,null=True) 
+    role = models.ForeignKey(Role, on_delete=models.DO_NOTHING, default=None,null=True)
     username = None
     first_name = None
     last_name= None
@@ -26,7 +30,6 @@ class CustomUser(AbstractUser):
 
     object = CustomUserManager()
    
-
 
 
 

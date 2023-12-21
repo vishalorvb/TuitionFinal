@@ -11,13 +11,12 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(leveln
 def send_otp(phone_number):
     otp = str(random.randint(1000, 9999))
     try:
-        if settings.DEBUG:
+        if settings.ENVIRONMENT_NAME=='dev':
             print("OTP is", otp)
             return otp
         else:
             url = f"https://2factor.in/API/V1/{settings.API_KEY}/SMS/{phone_number}/{otp}."
-            response = requests.get(url)
-
+            requests.get(url)
         return otp
     except Exception:
         logging.error("OTP is not Sent")

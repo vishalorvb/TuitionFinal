@@ -1,5 +1,5 @@
 from .service import send_Email
- 
+from django.conf import settings
 
 
 
@@ -8,7 +8,7 @@ def sendVerificationLink(name,email,link):
     Dear {name},
 
     Thank you for registering. Please click the link below to verify your account:
-    http://127.0.0.1:8000/usermanager/verify_email/{link}
+    {settings.URL}usermanager/verify_email/{link}
 
     Best regards,
     Home Tution

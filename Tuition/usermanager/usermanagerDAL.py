@@ -2,6 +2,12 @@ from .models import *
 import logging
 logging.basicConfig(level=logging.INFO,format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',filename='../info.log', filemode='a',datefmt='%d-%b-%y %H:%M:%S')
 
+def getRole(roleId):
+    try:
+        return Role.objects.get(roleId=roleId)
+    except:
+        return None
+    
 
 def IsPhoneNumberExist(phoneNumber):
     try:
@@ -20,9 +26,9 @@ def IsEmailExist(email):
         logging.exception("DAL IsEmailExist")
         return False
 
-def AddUser(name,email,password,phone,points,link):
+def AddUser(name,email,password,phone,points,link,role):
     try:
-        CustomUser.object.create_user(Full_name=name, phone_number=phone, email=email, password=password, credit_points=points,link_token=link)
+        CustomUser.object.create_user(Full_name=name, phone_number=phone, email=email, password=password, credit_points=points,link_token=link,role=role)
     except Exception:
         logging.exception("password not update in DAL")
         
