@@ -57,7 +57,7 @@ def get_user(id):
     
 def get_user_bylink(link):
     try:
-        user = CustomUser.object.get(link_token = token)
+        user = CustomUser.object.get(link_token = link)
         return user
     except :
         return False
@@ -79,10 +79,13 @@ def save_email_link(userId,link):
 
     
 def verify_email(token):
-    user = CustomUser.object.get(link_token = token)
-    user.is_email_varified = True
-    user.save()
-    return True
+    try:
+        user = CustomUser.object.get(link_token = token)
+        user.is_email_varified = True
+        user.save()
+        return True
+    except:
+        return False
 
         
     

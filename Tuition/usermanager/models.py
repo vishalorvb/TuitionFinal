@@ -8,6 +8,9 @@ class Role(models.Model):
     roleId = models.IntegerField()
     roleName = models.CharField(max_length=55)
 
+    def __str__(self):
+        return self.roleName
+
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=12 , unique=True)
     Full_name = models.CharField(max_length=55)

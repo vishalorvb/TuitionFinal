@@ -83,12 +83,12 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('Home:Home'))
 
 
-def verify_email(request,link):
-    val = verifyEmail(urllib.parse.unquote(link))
-    if val:
-        return HttpResponse("Verified")
-    else:
-        return HttpResponse("Fail") 
+#def verify_email(request,link):
+#    val = verifyEmail(urllib.parse.unquote(link))
+#    if val:
+#        return HttpResponse("Verified")
+#    else:
+#        return HttpResponse("Fail") 
 
 
 #############################################################
@@ -149,9 +149,23 @@ def login(request):
         response_data = {
             'refresh': str(refresh),
             'access': str(refresh.access_token),
-            'user_id': user.id,
             'Full_name': user.Full_name,
+            'roleId': user.role.roleId,
         }
         return Response(response_data, status=status.HTTP_200_OK)
     else:
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+    
+
+
+@api_view(['GET'])
+def verify_email(request, link):
+    try:
+        val = verifyEmail(urllib.parse.unquote(link))
+        if val:
+            return Response({"detail": "Verified"}, status=status.HTTP_200_OK)
+        else:
+            return Response({"detail": "Fail"}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        logging.exception("Registration post request")
+        return Response({"detail": f"An error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
