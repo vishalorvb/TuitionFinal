@@ -12,9 +12,10 @@ def is_user_teacher(userid):
 def is_teacher_exist(teacherid):
     return IsTeacherExist(teacherid)    
 
-def unlock_teacherBAL(user,teacher):
-    if IsUserTeacherExist(user.id,teacher.id) == False and user.id != teacher.User_id.id and user.credit_points > 0:
-        if UnlockTeacher(user,teacher):
+def unlock_teacherBAL(user,teacherId):
+    teacher = is_teacher_exist(teacherId)
+    if IsUserTeacherExist(user.id,teacher.id) == False and user.id != teacher.User_id.id :
+        if user.credit_points > 0 and  UnlockTeacher(user,teacher):
             cp = user.credit_points
             user.credit_points = cp -1
             user.save()

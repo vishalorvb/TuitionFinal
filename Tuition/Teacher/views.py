@@ -56,39 +56,39 @@ def teacher_page2(request):
         return HttpResponseRedirect(reverse('teacher:teacher_page1'))
 
 
-@login_required(login_url="/usermanager/login_page")
-def unlock_teacher(request):
-    if request.method == "GET":
-        try:
-            teacher_id = int(request.GET['teacher_id'])
-            teacher = is_teacher_exist(teacher_id)
-            if teacher == False:
-                return HttpResponseRedirect(reverse('Home:error'))
-        except:
-            return HttpResponseRedirect(reverse('Home:error'))
-        if request.user.credit_points > 0:
-            unlock_teacherBAL(request.user, teacher)
-            return HttpResponseRedirect(reverse('Home:profile'))
-        else:
-            # redirect to payment page
-            return HttpResponseRedirect(reverse('payment:payment'))
+#@login_required(login_url="/usermanager/login_page")
+#def unlock_teacher(request):
+#    if request.method == "GET":
+#        try:
+#            teacher_id = int(request.GET['teacher_id'])
+#            teacher = is_teacher_exist(teacher_id)
+#            if teacher == False:
+#                return HttpResponseRedirect(reverse('Home:error'))
+#        except:
+#            return HttpResponseRedirect(reverse('Home:error'))
+#        if request.user.credit_points > 0:
+#            unlock_teacherBAL(request.user, teacher)
+#            return HttpResponseRedirect(reverse('Home:profile'))
+#        else:
+#            # redirect to payment page
+#            return HttpResponseRedirect(reverse('payment:payment'))
 
-    try:
-        teacher_id = int(request.GET['teacher_id'])
-        teacher = Teacher.objects.get(id=teacher_id)
-        points = request.user.credit_points
-        if points > 0:
-            request.user.credit_points = points - 1
-            request.user.save()
-            Tu = Teacher_unlock.objects.create(
-                Teacher_id=teacher, User_id=request.user)
-            Tu.save()
-            return HttpResponse(teacher.Phone_number)
-        else:
-            return HttpResponseRedirect(reverse('payment:create_order'))
+#    try:
+#        teacher_id = int(request.GET['teacher_id'])
+#        teacher = Teacher.objects.get(id=teacher_id)
+#        points = request.user.credit_points
+#        if points > 0:
+#            request.user.credit_points = points - 1
+#            request.user.save()
+#            Tu = Teacher_unlock.objects.create(
+#                Teacher_id=teacher, User_id=request.user)
+#            Tu.save()
+#            return HttpResponse(teacher.Phone_number)
+#        else:
+#            return HttpResponseRedirect(reverse('payment:create_order'))
 
-    except:
-        return HttpResponseRedirect(reverse('teacher:view_teacher'))
+#    except:
+#        return HttpResponseRedirect(reverse('teacher:view_teacher'))
 
 
 def view_teacher(request):
@@ -224,16 +224,16 @@ def update_teacher_Profile(request):
     if Teacher == False:
         return Response({"message": "User is not a teacher."}, status=status.HTTP_400_BAD_REQUEST)
     try:
-        Teacher.Name = request.POST['name']
-        Teacher.Experience = request.POST['experience']
-        Teacher.Location = request.POST['locality']
-        Teacher.Qualification = request.POST['qualification']
-        Teacher.Subject = request.POST['subject']
-        Teacher.classes = request.POST['classes']
-        Teacher.Pincode =None if isPincode(request.POST['pincode'])==False else isPincode(request.POST['pincode'])
-        Teacher.Teaching_mode = request.POST['mode']
-        Teacher.Age = request.POST['age']
-        Teacher.About = request.POST['about']
+        Teacher.Name = request.data['name']
+        Teacher.Experience = request.data['experience']
+        Teacher.Location = request.data['locality']
+        Teacher.Qualification = request.data['qualification']
+        Teacher.Subject = request.data['subject']
+        Teacher.classes = request.data['classes']
+        Teacher.Pincode =None if isPincode(request.data['pincode'])==False else isPincode(request.data['pincode'])
+        Teacher.Teaching_mode = request.data['mode']
+        Teacher.Age = request.data['age']
+        Teacher.About = request.data['about']
         Teacher.save()
         return Response({"message": "Teacher Profile Updated."}, status=status.HTTP_202_ACCEPTED)
     except Exception:
@@ -252,4 +252,13 @@ def getTecher_info(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def unlock_teacher(request):
+    user = request.user
+    teacherId = request.data["teacher_id"]
+    unlock = unlock_teacherBAL(user,teacherId)
+    if unlock:
+        return Response({"message": "Techer Unlock Successfully."}, status=status.HTTP_200_OK)
+    return Response({"message": "No Credit Left."}, status=status.HTTP_400_BAD_REQUEST)
