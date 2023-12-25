@@ -22,21 +22,21 @@ def get_latest_tuition():
 def get_all_tuition():
     return getAllTuition()
 
-def unlock_tuitions(user,tution):
-    logging.info("Calling  BAL")
-    if IstuitionUserExist(user.id,tution.id) == False and user.id != tution.user_id.id and user.credit_points > 0:
-        if unlockTuition(user,tution):  
+def unlock_tuitions(user,tutionId):
+    tution = is_tutionid_exists(tutionId)
+    if  IstuitionUserExist(user.id,tution.id) == False and user.id != tution.user_id.id :
+        if user.credit_points > 0 and unlockTuition(user,tution):  
            cp = user.credit_points
            user.credit_points = cp -1
            user.save()
            unlock  = tution.unlocks
            tution.unlocks = unlock + 1
            tution.save()
-           return True
+           return tution.phone_number
         else:
            return False  
     else:
-        return True
+        return tution.phone_number
     
         
 
