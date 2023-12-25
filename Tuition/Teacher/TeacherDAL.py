@@ -83,3 +83,10 @@ def getMyTeacher(userId):
         logging.exception("Create teacher Teacher DAL") 
         return None
             
+
+def getTeacherInfo(userId):
+    try:
+        t= Teacher.objects.get(User_id=userId)
+        return t
+    except:
+        return None    

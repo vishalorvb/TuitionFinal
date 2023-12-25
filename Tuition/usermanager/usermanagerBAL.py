@@ -58,8 +58,7 @@ def updatePassword(phone):
     else:
         return False     
 
-def is_tuitionid_exist(id):
-    return IsTuitionIdExist(id)       
+   
 
 
 def verifyEmail(link):

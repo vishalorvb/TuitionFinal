@@ -42,3 +42,12 @@ def get_latest_teacher():
 
 def isPincodeExists(pin):
     return  isPincode(pin)
+
+
+def getTeacher(userId):
+    pass
+
+
+def getTeacheInfo(userId):
+    teacher = getTeacherInfo(userId)
+    return teacher
