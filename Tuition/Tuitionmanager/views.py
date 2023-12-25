@@ -4,6 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .tuitionBAL import *
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
@@ -118,7 +124,7 @@ def save_tuition(request):
             del(request.session['pincode']) 
             del(request.session['locality']) 
             
-            t = saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=subject, teaching_mode=mode, fee=fee,pincode=pin,locality=locality)
+            t = saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=description, teaching_mode=mode, fee=fee,pincode=pin,locality=locality)
             if t:
                 return HttpResponseRedirect(reverse('Home:profile'))
             else:
@@ -145,4 +151,42 @@ def change_status(request):
     else:
         return HttpResponseNotAllowed("Method not allowed")
         
-     
+
+
+##################################################################################
+################################## API ###########################################
+##################################################################################
+    
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def createTuition(request):
+    try:
+        student_name = request.data['student_name']
+        phone_number = request.data['student_phone_number']
+        course = request.data['course']
+        subject = request.data['subject']
+        description = request.data['description']
+        fee = request.data['fee']
+        mode = request.data['mode']
+        pincode = request.data['pincode']
+        locality = request.data['locality']
+        pin = isPincodeExists(pincode)
+    except:
+        return Response({"message": "Invalid Data format."}, status=status.HTTP_400_BAD_REQUEST)
+    if pin == False:
+        return Response({"message": "Invalid pincode."}, status=status.HTTP_400_BAD_REQUEST)
+    
+    t = saveTuition(request.user, student_name=student_name, phone_number=phone_number, course=course, subject=subject, description=description, teaching_mode=mode, fee=fee,pincode=pin,locality=locality)
+
+    if t:
+        return Response({"message": "Your Tuition Posted Successfully."}, status=status.HTTP_201_CREATED)
+    return Response({"message": "Failed to create."}, status=status.HTTP_400_BAD_REQUEST)
+
+def unlockTuition(request):
+    pass
+
+
+def changeStatus(request):
+    pass
+

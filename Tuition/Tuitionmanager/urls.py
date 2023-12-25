@@ -9,4 +9,10 @@ urlpatterns = [
     re_path(r'^/unlock_tuition', views.unlock_tuition, name='unlock_tuition'),
     re_path(r'^/change_status', views.change_status, name='change_status'),
     re_path(r'^/view_tuitions$', views.view_tuitions, name='view_tuitions'),
+
+
+    re_path(r'^/createTuition$', views.createTuition, name='createTuition'),
+
+
+
 ]
