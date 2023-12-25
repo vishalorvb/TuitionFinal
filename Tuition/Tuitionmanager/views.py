@@ -183,10 +183,25 @@ def createTuition(request):
         return Response({"message": "Your Tuition Posted Successfully."}, status=status.HTTP_201_CREATED)
     return Response({"message": "Failed to create."}, status=status.HTTP_400_BAD_REQUEST)
 
+
+
 def unlockTuition(request):
     pass
 
 
+
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def changeStatus(request):
-    pass
+    try:
+        tid = request.GET['tuition_id']
+        t  = change_status_of_tuition(request.user.id,tid)
+        if t:
+            return Response({"message": "Opration Successfull."}, status=status.HTTP_200_OK)
+        Response({"message": "Failed."}, status=status.HTTP_400_BAD_REQUEST)
+
+    except:
+        Response({"message": "Invalid Data."}, status=status.HTTP_400_BAD_REQUEST)
 

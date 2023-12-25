@@ -12,7 +12,7 @@ urlpatterns = [
 
 
     re_path(r'^/createTuition$', views.createTuition, name='createTuition'),
-
+    re_path(r'^/changeStatus', views.changeStatus, name='changeStatus'),
 
 
 ]
