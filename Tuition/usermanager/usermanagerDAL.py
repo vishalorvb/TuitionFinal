@@ -86,6 +86,18 @@ def verify_email(token):
         return True
     except:
         return False
+    
+
+
+def change_user_teacher_status(userId):
+    try:
+        user = CustomUser.object.get(id = userId)
+        user.is_teacher = True
+        return True
+    except Exception :
+        logging.exception("DAL change_user_teacher_status")
+        return False
+ 
 
         
     

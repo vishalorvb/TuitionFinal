@@ -2,6 +2,7 @@ from .models import *
 import logging
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import MultipleObjectsReturned
+from usermanager.usermanagerDAL import change_user_teacher_status
 logging.basicConfig(level=logging.INFO, format='%(asctime)s-%(process)d-%(levelname)s-%(message)s',
                     filename='../info.log', filemode='a', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -52,6 +53,7 @@ def CreateTeacher(Name, Gender, Experience, location,
                      classes=classes, About=About, User_id=User_id,
                      Teaching_mode=Teaching_mode, Phone_number=Phone_number,
                      Age=Age,Fee=Fee,Pincode=Pincode)
+        change_user_teacher_status(User_id)
         teacher.save()
         return True
     except Exception:
@@ -89,4 +91,6 @@ def getTeacherInfo(userId):
         t= Teacher.objects.get(User_id=userId)
         return t
     except:
-        return None    
+        return None
+
+
