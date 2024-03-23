@@ -4,7 +4,8 @@ var listItems = suggestionList.getElementsByTagName("li");
 var searchType = document.getElementById("searchType")
 
 searchType.addEventListener("change", (e) => {
-    console.log(e.target.value)
+    suggestionList.innerHTML = ""
+    inputField.value=""
     document.getElementById("inputLabel").textContent = e.target.value == 1 ? "Pincode" : "City"
 })
 
